@@ -17,3 +17,137 @@
 		<title>Topist</title>
     </head>
     <body>
+		<div id="modal-login" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<form>
+					<header class="modal-card-head">
+						<p class="modal-card-title">
+							<span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+							<span>Login</span>
+						</p>
+						<button class="delete" aria-label="close"></button>
+					</header>
+					<section class="modal-card-body">
+						<div class="field">
+							<p class="control has-icons-left has-icons-right">
+								<input class="input" type="text" placeholder="Username">
+								<span class="icon is-small is-left">
+									<i class="fas fa-user"></i>
+								</span>
+							</p>
+						</div>
+						<div class="field">
+							<p class="control has-icons-left">
+								<input class="input" type="password" placeholder="Password">
+								<span class="icon is-small is-left">
+									<i class="fas fa-lock"></i>
+								</span>
+							</p>
+						</div>
+					</section>
+					<footer class="modal-card-foot">
+						<button class="button is-success">Login</button>
+					</footer>
+				</form>
+			</div>
+		</div>
+
+		<div id="modal-register" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<form>
+					<header class="modal-card-head">
+						<p class="modal-card-title">
+							<span class="icon"><i class="fas fa-user-plus"></i></span>
+							<span>Register</span>
+						</p>
+						<button class="delete" aria-label="close"></button>
+					</header>
+					<section class="modal-card-body">
+						<div class="field">
+							<p class="control has-icons-left has-icons-right">
+								<input class="input" type="text" placeholder="Username">
+								<span class="icon is-small is-left">
+									<i class="fas fa-user"></i>
+								</span>
+							</p>
+						</div>
+						<div class="field">
+							<p class="control has-icons-left has-icons-right">
+								<input class="input" type="email" placeholder="Email">
+								<span class="icon is-small is-left">
+									<i class="fas fa-envelope"></i>
+								</span>
+							</p>
+						</div>
+						<div class="field">
+							<p class="control has-icons-left">
+								<input class="input" type="password" placeholder="Password">
+								<span class="icon is-small is-left">
+									<i class="fas fa-lock"></i>
+								</span>
+							</p>
+						</div>
+						<div class="field">
+							<p class="control has-icons-left">
+								<input class="input" type="password" placeholder="Password confirmation">
+								<span class="icon is-small is-left">
+									<i class="fas fa-lock"></i>
+								</span>
+							</p>
+						</div>
+					</section>
+					<footer class="modal-card-foot">
+						<button class="button is-success">Register</button>
+					</footer>
+				</form>
+			</div>
+		</div>
+
+		<header class="hero is-info is-bold is-large">
+			<div class="hero-head">
+				<nav class="navbar">
+					<div class="container">
+						<div class="navbar-brand">
+							<a class="navbar-item">
+								<img src="images/logo.png" alt="Logo">
+							</a>
+							<span id="btn-burger" class="navbar-burger burger" data-target="navbarMenuHeroB">
+							<span></span>
+							<span></span>
+							<span></span>
+							</span>
+						</div>
+						<div id="navbarMenuHeroB" class="navbar-menu">
+							<div class="navbar-end">
+							<a class="navbar-item is-active">Home</a>
+							<a class="navbar-item">Users</a>
+							<a id="btn-modal-login" class="navbar-item">Login</a>
+							<a id="btn-modal-register" class="navbar-item">Register</a>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			
+			<div class="hero-body">
+				<div class="container has-text-centered">
+					<p class="title">Topist</p>
+					<p class="subtitle">A welcoming platform for all of those professional and silly TOP X lists.</p>
+				</div>
+			</div>
+			
+			<div class="hero-foot">
+				<nav class="tabs is-boxed is-fullwidth">
+					<div class="container">
+						<ul>
+							<li class="is-active"><a>Most popular</a></li>
+							<li><a>Most viewed</a></li>
+							<li><a>Oldest</a></li>
+							<li><a>Recent</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
