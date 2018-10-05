@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="public/images/icon.svg" width="200">
+    <img src="public/images/logo.svg" width="200">
 </p>
 <h1 align="center">Topist</h1>
 
