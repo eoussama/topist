@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/EOussama/topist/issues"
   },
-  "homepage": "https://github.com/EOussama/topist#readme"
+  "homepage": "https://github.com/EOussama/topist#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
