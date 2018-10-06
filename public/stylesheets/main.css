@@ -1,3 +1,13 @@
+div.box {
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+div.box:hover {
+    background-color: hsl(0, 0%, 96%);
+}
+
 div.topbox {
     align-items: center;
     background-color: hsl(204, 86%, 53%);

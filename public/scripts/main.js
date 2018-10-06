@@ -7,7 +7,8 @@ window.addEventListener('load', () => {
         modalLogin = document.getElementById('modal-login'),
         btnOpenModalRegister = document.getElementById('btn-modal-register'),
         btnCloseModalRegister = document.querySelector('#modal-register button.delete'),
-        modalRegister = document.getElementById('modal-register');
+        modalRegister = document.getElementById('modal-register'),
+        topists = document.querySelectorAll('div.box');
 
     btnBurger.addEventListener('click', () => {
         btnBurger.classList.toggle('is-active');
@@ -29,4 +30,7 @@ window.addEventListener('load', () => {
     btnCloseModalRegister.addEventListener('click', () => {
         modalRegister.classList.toggle('is-active');
     });
+
+    if(topists)
+        topists.forEach(topist => topist.addEventListener('click', () => window.location = `/topist/${topist.dataset.id}`))
 });

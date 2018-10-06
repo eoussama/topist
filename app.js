@@ -15,6 +15,7 @@ for(let i = 0; i<20; i++) {
     let
         _rand = Math.floor(Math.random() * 50) + 3,
         obj = {
+            _id: faker.random.uuid(),
             title: `TOP ${_rand} ${faker.lorem.word()}`,
             description: faker.lorem.paragraph(),
             date: faker.date.past(),
@@ -40,6 +41,14 @@ for(let i = 0; i<20; i++) {
 
 app.get('/', (req, res) => {
     res.render('index', {data: data});
+});
+
+app.get('/topist/new', (req, res) => {
+    res.render('topist/new');
+});
+
+app.get('/topist/:id', (req, res) => {
+    res.render('topist/index');
 });
 
 app.listen(PORT, () => console.log('Topist started successfully!'));
