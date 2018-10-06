@@ -63,7 +63,6 @@ app.post('/topist', (req, res) => {
     
     topist.date = new Date(topist.date);
     data.push(topist);
-    res.redirect('/');
 });
 
 app.get('/topist/new', (req, res) => {

@@ -30,16 +30,11 @@ window.addEventListener('load', () => {
                     entries: getEntries()
                 },
                 xhr = new XMLHttpRequest();
-  
-            xhr.addEventListener('load', () => {
-                if(this.status == 200) {
-                    console.log('request sent!');
-                }
-            });
-                
+                              
             xhr.open("POST", '/topist', true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send(`topist=${JSON.stringify(topist)}`);
+            window.location = '/';
         });
 
         formTopist.addEventListener('reset', () => {
