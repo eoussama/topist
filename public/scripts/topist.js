@@ -39,7 +39,7 @@ window.addEventListener('load', () => {
                 
             xhr.open("POST", '/topist', true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("topist=" + topist);
+            xhr.send(`topist=${JSON.stringify(topist)}`);
         });
 
         formTopist.addEventListener('reset', () => {

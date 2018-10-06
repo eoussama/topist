@@ -59,7 +59,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/topist', (req, res) => {
-    console.log(req.params.topist);
+    const topist = JSON.parse(req.body.topist);
+    data.push(topist);
 });
 
 app.get('/topist/new', (req, res) => {
