@@ -8,7 +8,7 @@ div.box:hover {
     background-color: hsl(0, 0%, 96%);
 }
 
-div.topbox {
+div.topbox, div.topbox-pos {
     align-items: center;
     background-color: hsl(204, 86%, 53%);
     border: 1px solid hsl(217, 71%, 53%);
@@ -21,7 +21,7 @@ div.topbox {
     width: 100px;
 }
 
-div.topbox span.value, div.topbox span.label {
+div.topbox span.value, div.topbox span.label, div.topbox-pos span.value {
     color: hsl(0, 0%, 96%);
     font-weight: bold;
 }
@@ -32,8 +32,30 @@ div.topbox span.label {
     text-transform: uppercase;
 }
 
-div.topbox span.value {
+div.topbox span.value, div.topbox-pos span.value {
+    font-size: 50px;
     position: absolute;
     top: 20%;
+}
+div.topbox-pos span.value {
     font-size: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.message a {
+    text-decoration: none !important;
+    transition-property: color;
+    transition-duration: .3s;
+}
+
+.message a:hover {
+    color: hsl(204, 94%, 87%) !important;
+}
+
+.topist-list .card, .topist-list .message {
+    margin: auto;
+    max-width: 800px;
 }

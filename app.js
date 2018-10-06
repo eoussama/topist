@@ -28,7 +28,9 @@ for(let i = 0; i<20; i++) {
 
     for(let j = 0; j<_rand; j++) {
         obj.entries.push({
+            position: j + 1,
             title: faker.lorem.words(),
+            subtitle: faker.lorem.words(),
             picture: faker.internet.avatar(),
             description: faker.lorem.paragraph()
         });
@@ -59,7 +61,12 @@ app.get('/topist/new', (req, res) => {
 });
 
 app.get('/topist/:id', (req, res) => {
-    res.render('topist/index', {data: getList(req.params.id)});
+    let dataList = getList(req.params.id);
+
+    if(dataList === null)
+        res.send('Page not found');
+    else 
+        res.render('topist/index', {data: dataList});
 });
 
 app.get('*', (req, res) => {
