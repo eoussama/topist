@@ -2,7 +2,7 @@
 
 <section class="section topist-list">
     <div class="container">
-        <form>
+        <form id="form-topist">
             <div class="box">
                 <h1 class="title">Creating a new Topist</h1>
                 
@@ -19,11 +19,11 @@
                             <input id="topist-counter" class="input" type="number" value="10" min="3" max="100" required>
                         </p>
                         <p class="control">
-                            <input class="input" type="text" placeholder="*Topic" required>
+                            <input id="topic-title" class="input" type="text" placeholder="*Topic" required>
                         </p>
                     </div>
                     <hr>
-                    <textarea class="textarea" placeholder="Topist description"></textarea>
+                    <textarea id="topic-description" class="textarea" placeholder="Topist description"></textarea>
                 </div>
 
                 <hr>
@@ -32,6 +32,17 @@
                     <h1 class="subtitle">Topist entries</h1>
                     <hr>
                     <div id="topist-entries-entainer"></div>
+                </div>
+
+                <hr>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button type="submit" class="button is-info">Create Topist</button>
+                    </div>
+                    <div class="control">
+                        <button type="reset" class="button is-normal">Reset</button>
+                    </div>
                 </div>
             </div>
         </form>

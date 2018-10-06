@@ -16,7 +16,7 @@ for(let i = 0; i<20; i++) {
         _rand = Math.floor(Math.random() * 50) + 3,
         obj = {
             _id: faker.random.uuid(),
-            title: `TOP ${_rand} ${faker.lorem.word()}`,
+            topic: faker.lorem.word(),
             description: faker.lorem.paragraph(),
             date: faker.date.past(),
             user: faker.internet.userName(),
