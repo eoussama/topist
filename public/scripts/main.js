@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
         btnOpenModalRegister = document.getElementById('btn-modal-register'),
         btnCloseModalRegister = document.querySelector('#modal-register button.delete'),
         modalRegister = document.getElementById('modal-register'),
-        topists = document.querySelectorAll('div.box');
+        topists = document.querySelectorAll('div.tops-box');
 
     btnBurger.addEventListener('click', () => {
         btnBurger.classList.toggle('is-active');

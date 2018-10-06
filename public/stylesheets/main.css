@@ -1,10 +1,10 @@
-div.box {
+div.tops-box {
     cursor: pointer;
     transition-property: background-color;
     transition-duration: .3s;
 }
 
-div.box:hover {
+div.tops-box:hover {
     background-color: hsl(0, 0%, 96%);
 }
 
@@ -71,7 +71,7 @@ div.topbox-pos.pos-1 {
     color: hsl(204, 94%, 87%) !important;
 }
 
-.topist-list .card, .topist-list .message {
+.topist-list .card, .topist-list .message, .topist-list .box {
     margin: auto;
     max-width: 800px;
 }
