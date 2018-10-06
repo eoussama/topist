@@ -17,19 +17,29 @@ window.addEventListener('load', () => {
         formTopist.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const topist = {
-                _id: 'fgdfgdf-hjghhdd',
-                topic: document.getElementById('topic-title').value,
-                description: document.getElementById('topic-description').value,
-                date: new Date(),
-                user: 'admin',
-                upvotes: 0,
-                downvotes: 0,
-                views: 0,
-                entries: getEntries()
-            };
-
-            console.log(topist);
+            const
+                topist = {
+                    _id: 'fgdfgdf-hjghhdd',
+                    topic: document.getElementById('topic-title').value,
+                    description: document.getElementById('topic-description').value,
+                    date: new Date(),
+                    user: 'admin',
+                    upvotes: 0,
+                    downvotes: 0,
+                    views: 0,
+                    entries: getEntries()
+                },
+                xhr = new XMLHttpRequest();
+  
+            xhr.addEventListener('load', () => {
+                if(this.status == 200) {
+                    console.log('request sent!');
+                }
+            });
+                
+            xhr.open("POST", '/topist', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("topist=" + topist);
         });
 
         formTopist.addEventListener('reset', () => {

@@ -1,5 +1,6 @@
 const
     express = require('express'),
+    bodyParser = require('body-parser'),
     app = express(),
     faker = require('faker'),
     PORT = process.env.PORT || 3000;
@@ -8,6 +9,7 @@ const
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended: true}));
 
 var data = [];
 
@@ -54,6 +56,10 @@ function getList(_id) {
 
 app.get('/', (req, res) => {
     res.render('index', {data: data});
+});
+
+app.post('/topist', (req, res) => {
+    console.log(req.params.topist);
 });
 
 app.get('/topist/new', (req, res) => {
