@@ -8,6 +8,7 @@ div.box:hover {
     background-color: hsl(0, 0%, 96%);
 }
 
+/* #region topbox*/
 div.topbox, div.topbox-pos {
     align-items: center;
     background-color: hsl(204, 86%, 53%);
@@ -44,6 +45,21 @@ div.topbox-pos span.value {
     transform: translateY(-50%);
 }
 
+div.topbox-pos.pos-3 {
+    background-color: silver;
+    border-color: silver;
+}
+
+div.topbox-pos.pos-2 {
+    background-color: rgb(255, 94, 0);
+    border-color: rgb(255, 94, 0);
+}
+
+div.topbox-pos.pos-1 {
+    background-color: gold;
+    border-color: gold;
+}
+/* #endregion */
 
 .message a {
     text-decoration: none !important;

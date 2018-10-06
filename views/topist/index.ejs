@@ -28,7 +28,13 @@
                     </div>
                 </nav>
             </div>
-            <div class="message-body"><%= data.description %></div>
+            <div class="message-body">
+                <%= data.description %>
+                <hr>
+                <small>
+                    Originally posted by <a><strong><%= data.user %></strong></a> on <i><%= data.date.toLocaleDateString() %></i>.
+                </small>
+            </div>
         </article>
 
         <hr>
@@ -43,7 +49,7 @@
                 <div class="card-content">
                     <div class="media">
                         <div class="media-left">
-                            <div class="topbox-pos">
+                            <div class="topbox-pos pos-<%= entry.position %>">
                                 <span class="value"><%= entry.position %></span>
                             </div>
                         </div>
