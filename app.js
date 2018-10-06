@@ -37,6 +37,17 @@ for(let i = 0; i<20; i++) {
     data.push(obj);
 }
 
+function getList(_id) {
+    let temp = null;
+
+    data.forEach(dt => {
+        if(dt._id == _id)
+            temp = dt;
+    });
+
+    return temp;
+}
+
 // Routes -----------------------------------------------------
 
 app.get('/', (req, res) => {
@@ -48,7 +59,11 @@ app.get('/topist/new', (req, res) => {
 });
 
 app.get('/topist/:id', (req, res) => {
-    res.render('topist/index');
+    res.render('topist/index', {data: getList(req.params.id)});
+});
+
+app.get('*', (req, res) => {
+    res.send('Page not found');
 });
 
 app.listen(PORT, () => console.log('Topist started successfully!'));
