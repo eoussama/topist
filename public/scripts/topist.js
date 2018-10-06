@@ -101,6 +101,7 @@ window.addEventListener('load', () => {
 
             for(let i = 0; i<topistEntriesNumber; i++) {
                 _entries.push({
+                    position: i + 1,
                     title: document.querySelector(`[data-entry-title="${i + 1}"]`).value,
                     subtitle: document.querySelector(`[data-entry-subtitle="${i + 1}"]`).value,
                     picture: document.querySelector(`[data-entry-picture="${i + 1}"]`).value,

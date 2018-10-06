@@ -60,7 +60,10 @@ app.get('/', (req, res) => {
 
 app.post('/topist', (req, res) => {
     const topist = JSON.parse(req.body.topist);
+    
+    topist.date = new Date(topist.date);
     data.push(topist);
+    res.redirect('/');
 });
 
 app.get('/topist/new', (req, res) => {
