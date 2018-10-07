@@ -5,7 +5,7 @@ const
     app = express(),
     faker = require('faker'),
     topist = require('./models/topist'),
-    entrie = require('./models/entry'),
+    entry = require('./models/entry'),
     PORT = process.env.PORT || 3000;
 
 
@@ -23,15 +23,37 @@ app.get('/', (req, res) => {
     topist.find({}, (err, topists) => {
         if(!err)
             res.render('index', {data: topists});
-    })
+    });
 });
 
 app.post('/topist', (req, res) => {
-    const topist = JSON.parse(req.body.topist);
+    const _topist = JSON.parse(req.body.topist);
     
-    topist.date = new Date(topist.date);
-    console.log(topist);
-    data.push(topist);
+    _topist.date = new Date(_topist.date);
+
+    topist.create(
+        {
+            topic: _topist.topic,
+            description: _topist.description,
+            user: _topist.user
+        },
+        (err, topist) => {
+            if(!err) {
+                _topist.entries.forEach(__entry => {
+                    const _entry = new entry({
+                        position: __entry.position,
+                        title: __entry.title,
+                        subtitle: __entry.subtitle,
+                        picture: __entry.picture,
+                        description: __entry.description
+                    });
+
+                    topist.entries.push(_entry);
+                    _entry.save();
+                    topist.save();
+                });
+            }
+        });
 });
 
 app.get('/topist/new', (req, res) => {
@@ -39,12 +61,12 @@ app.get('/topist/new', (req, res) => {
 });
 
 app.get('/topist/:id', (req, res) => {
-    let dataList = getList(req.params.id);
-
-    if(dataList === null)
-        res.send('Page not found');
-    else 
-        res.render('topist/index', {data: dataList});
+    topist.findOne({ _id: req.params.id }).populate('entries').exec((err, topist) => {
+        if(err)
+            res.send('Page not found');
+        else 
+            res.render('topist/index', { data: topist });
+    });
 });
 
 app.get('*', (req, res) => {

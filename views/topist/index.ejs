@@ -32,7 +32,7 @@
                 <%= data.description %>
                 <hr>
                 <small>
-                    Originally posted by <a><strong><%= data.user %></strong></a> on <i><%= data.date.toLocaleDateString() %></i>.
+                    Originally posted by <a><strong><%= data.user %></strong></a> on <i><%= (new Date(data.date)).toLocaleDateString() %></i>.
                 </small>
             </div>
         </article>
