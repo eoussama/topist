@@ -20,7 +20,11 @@ mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true }
 // Routes -----------------------------------------------------
 
 app.get('/', (req, res) => {
-    res.render('index', {data: data});
+    topist.find({}, (err, topists) => {
+        console.log(topists);
+        if(!err)
+            res.render('index', {data: topists});
+    })
 });
 
 app.post('/topist', (req, res) => {

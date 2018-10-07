@@ -2,6 +2,21 @@
 
 <section class="section">
     <div class="container">
+        <% if(!data.length) { %>
+            <div class="box such-empty">
+                <div class="content has-text-centered">
+                    <h2 class="subtitle has-text-info">
+                        <span class="icon is-medium">
+                            <i class="fa fa-frown"></i>
+                        </span>
+                        <span>Such Empty</span>
+                    </h2>
+                    <hr>
+                    <p>Be the first to create a Topist</p>
+                    <a href="/topist/new" class="button is-info">Create a Topist</a>
+                </div>
+            </div>
+        <% } %>
         <% data.forEach(dt => { %>
             <div class="box tops-box" data-id="<%= dt._id %>">
                 <article class="media">
