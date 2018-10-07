@@ -19,7 +19,6 @@ window.addEventListener('load', () => {
 
             const
                 topist = {
-                    _id: 'fgdfgdf-hjghhdd',
                     topic: document.getElementById('topic-title').value,
                     description: document.getElementById('topic-description').value,
                     date: new Date(),

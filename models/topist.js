@@ -8,9 +8,18 @@ const
             default: Date.now
         },
         user: String,
-        upvotes: Number,
-        downvotes: Number,
-        views: Number,
+        upvotes: {
+            type: Number,
+            default: 0
+        },
+        downvotes: {
+            type: Number,
+            default: 0
+        },
+        views: {
+            type: Number,
+            default: 0
+        },
         entries: [
             {
                 type: mongoose.Schema.Types.ObjectId,

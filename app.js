@@ -21,7 +21,6 @@ mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true }
 
 app.get('/', (req, res) => {
     topist.find({}, (err, topists) => {
-        console.log(topists);
         if(!err)
             res.render('index', {data: topists});
     })
@@ -31,6 +30,7 @@ app.post('/topist', (req, res) => {
     const topist = JSON.parse(req.body.topist);
     
     topist.date = new Date(topist.date);
+    console.log(topist);
     data.push(topist);
 });
 
