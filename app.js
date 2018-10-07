@@ -1,6 +1,7 @@
 const
     express = require('express'),
     bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
     app = express(),
     faker = require('faker'),
     PORT = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 
 var data = [];
 
