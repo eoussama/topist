@@ -61,11 +61,15 @@ app.get('/topist/new', (req, res) => {
 });
 
 app.get('/topist/:id', (req, res) => {
-    topist.findOne({ _id: req.params.id }).populate('entries').exec((err, topist) => {
+    const __id = req.params.id;
+
+    topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
         if(err)
             res.send('Page not found');
-        else 
-            res.render('topist/index', { data: topist });
+        else {
+            topist.findOneAndUpdate({_id: __id}, {$inc : {'views' : 1}}).exec();
+            res.render('topist/index', { data: _topist });
+        }
     });
 });
 
