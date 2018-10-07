@@ -13,7 +13,7 @@ const
         views: Number,
         entries: [
             {
-                type: Schema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'entries'
             }
         ]

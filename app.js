@@ -4,8 +4,8 @@ const
     mongoose = require('mongoose'),
     app = express(),
     faker = require('faker'),
-    topist = require('models/topist'),
-    entrie = require('models/entrie'),
+    topist = require('./models/topist'),
+    entrie = require('./models/entry'),
     PORT = process.env.PORT || 3000;
 
 
