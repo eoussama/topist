@@ -4,7 +4,10 @@ const
     mongoose = require('mongoose'),
     app = express(),
     faker = require('faker'),
+    topist = require('models/topist'),
+    entrie = require('models/entrie'),
     PORT = process.env.PORT || 3000;
+
 
 // Configuration ----------------------------------------------
 
@@ -13,46 +16,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 
-var data = [];
-
-for(let i = 0; i<20; i++) {
-    let
-        _rand = Math.floor(Math.random() * 50) + 3,
-        obj = {
-            _id: faker.random.uuid(),
-            topic: faker.lorem.word(),
-            description: faker.lorem.paragraph(),
-            date: faker.date.past(),
-            user: faker.internet.userName(),
-            upvotes: faker.random.number(),
-            downvotes: faker.random.number(),
-            views: faker.random.number(),
-            entries: []
-        };
-
-    for(let j = 0; j<_rand; j++) {
-        obj.entries.push({
-            position: j + 1,
-            title: faker.lorem.words(),
-            subtitle: faker.lorem.words(),
-            picture: faker.internet.avatar(),
-            description: faker.lorem.paragraph()
-        });
-    }
-
-    data.push(obj);
-}
-
-function getList(_id) {
-    let temp = null;
-
-    data.forEach(dt => {
-        if(dt._id == _id)
-            temp = dt;
-    });
-
-    return temp;
-}
 
 // Routes -----------------------------------------------------
 
