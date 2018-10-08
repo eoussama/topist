@@ -52,8 +52,9 @@ app.post('/topist', (req, res) => {
 
                     topist.entries.push(_entry);
                     _entry.save();
-                    topist.save();
                 });
+
+                topist.save();
             }
         });
 });
