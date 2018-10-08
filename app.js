@@ -26,6 +26,10 @@ app.use(require('express-session')({
 	resave: false,
 	saveUninitialized: false
 }));
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    return next();
+});
 
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
@@ -33,6 +37,14 @@ mongoose.set('useFindAndModify', false);
 passport.use(new localStrategy(User.authenticate())); 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
 
 
 // Routes -----------------------------------------------------
@@ -44,7 +56,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.post('/topist', (req, res) => {
+app.post('/topist', isLoggedIn, (req, res) => {
     const _topist = JSON.parse(req.sanitize(req.body.topist));
     
     _topist.date = new Date(_topist.date);
@@ -75,7 +87,7 @@ app.post('/topist', (req, res) => {
         });
 });
 
-app.get('/topist/new', (req, res) => {
+app.get('/topist/new', isLoggedIn, (req, res) => {
     res.render('topist/new');
 });
 
