@@ -14,7 +14,9 @@ app.set('port', process.env.PORT || 3000);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 var count = 0;
 // Routes -----------------------------------------------------
