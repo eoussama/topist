@@ -19,11 +19,24 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
+app.use(require('express-session')({
+	secret: "Some random string",
+	resave: false,
+	saveUninitialized: false
+}));
 
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
-var count = 0;
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser);
+passport.deserializeUser(User.deserializeUser);
+
+
 // Routes -----------------------------------------------------
 
 app.get('/', (req, res) => {
@@ -69,7 +82,7 @@ app.get('/topist/new', (req, res) => {
 });
 
 app.get('/topist/:id', (req, res) => {
-    const __id = req.params.id; ++count;
+    const __id = req.params.id;
 
     topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
         if(err)
