@@ -3,9 +3,12 @@ const
     passportLocalMongoose = require('passport-local-mongoose'),
     userSchema = mongoose.Schema({
         username: String,
-        email: String,
         password: String,
-        admin: Boolean,
+        email: String,
+        admin: {
+            type: Boolean,
+            default: false
+        },
         joined: {
             type: Date,
             default: Date.now

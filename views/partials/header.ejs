@@ -67,7 +67,7 @@
 					<section class="modal-card-body">
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="text" placeholder="Username" required minlength="3" maxlength="25">
+								<input name="user[username]" class="input" type="text" placeholder="Username" required minlength="3" maxlength="25">
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
 								</span>
@@ -75,7 +75,7 @@
 						</div>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Email" required minlength="3" maxlength="50">
+								<input name="user[email]" class="input" type="email" placeholder="Email" required minlength="3" maxlength="50">
 								<span class="icon is-small is-left">
 									<i class="fas fa-envelope"></i>
 								</span>
@@ -83,7 +83,7 @@
 						</div>
 						<div class="field">
 							<p class="control has-icons-left">
-								<input class="input" type="password" placeholder="Password" required minlength="5" maxlength="30" id="primary-pass">
+								<input name="user[password]" class="input" type="password" placeholder="Password" required minlength="5" maxlength="30" id="primary-pass">
 								<span class="icon is-small is-left">
 									<i class="fas fa-lock"></i>
 								</span>
@@ -121,17 +121,19 @@
 						</div>
 						<div id="navbarMenuHeroB" class="navbar-menu">
 							<div class="navbar-end">
-							<a href="/" class="navbar-item is-active">Home</a>
-							<% if(currentUser !== undefined) { %>
-								<a href="/topist/new" class="navbar-item">
-									<span class="icon is-medium">
-										<i class="fa fa-plus"></i>
-									</span>
-									<span>Create a topist</span>
-								</a>
-							<% } %>
-							<a id="btn-modal-login" class="navbar-item">Login</a>
-							<a id="btn-modal-register" class="navbar-item">Register</a>
+								<a href="/" class="navbar-item is-active">Home</a>
+								<% if(currentUser !== undefined) { %>
+									<a href="/topist/new" class="navbar-item">
+										<span class="icon is-medium">
+											<i class="fa fa-plus"></i>
+										</span>
+										<span>Create a topist</span>
+									</a>
+									<a id="btn-modal-register" class="navbar-item">Logout</a>
+								<% } else { %>
+									<a id="btn-modal-login" class="navbar-item">Login</a>
+									<a id="btn-modal-register" class="navbar-item">Register</a>
+								<% } %>
 							</div>
 						</div>
 					</div>

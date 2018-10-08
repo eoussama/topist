@@ -104,8 +104,15 @@ app.get('/topist/:id', (req, res) => {
     });
 });
 
+app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/' }));
+
 app.post('/register', (req, res) => {
-    console.log('recieved');
+    User.register({
+        username: req.sanitize(req.body.user.username),
+        email: req.sanitize(req.body.user.email),
+    }, req.sanitize(req.body.user.password));
+
+    res.redirect('/');
 });
 
 app.get('*', (req, res) => {
