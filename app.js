@@ -1,12 +1,15 @@
 const
-    express             = require('express'),
-    bodyParser          = require('body-parser'),
-    expressSanitizer    = require('express-sanitizer'),
-    mongoose            = require('mongoose'),
-    app                 = express(),
-    topist              = require('./models/topist'),
-    entry               = require('./models/entry'),
-    faker               = require('faker');
+    express                 = require('express'),
+    bodyParser              = require('body-parser'),
+    expressSanitizer        = require('express-sanitizer'),
+    mongoose                = require('mongoose'),
+    passport                = require('passport'),
+    passportLocal           = require('passport-local'),
+    passportLocalMongoose   = require('passport-local-mongoose'),
+    app                     = express(),
+    topist                  = require('./models/topist'),
+    entry                   = require('./models/entry'),
+    faker                   = require('faker');
 
 
 // Configuration ----------------------------------------------
