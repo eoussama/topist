@@ -15,6 +15,7 @@ app.set('port', process.env.PORT || 3000);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());
 
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
@@ -30,7 +31,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/topist', (req, res) => {
-    const _topist = JSON.parse(req.body.topist);
+    const _topist = JSON.parse(req.sanitize(req.body.topist));
     
     _topist.date = new Date(_topist.date);
 
@@ -38,7 +39,7 @@ app.post('/topist', (req, res) => {
         {
             topic: _topist.topic,
             description: _topist.description,
-            user: _topist.user
+            user: _topist.use
         },
         (err, topist) => {
             if(!err) {
