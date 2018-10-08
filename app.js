@@ -68,7 +68,7 @@ app.get('/topist/:id', (req, res) => {
 
     topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
         if(err)
-            res.send('Page not found');
+            res.render('error');
         else {
             topist.findOneAndUpdate({_id: __id}, {$inc : {'views' : 1}}).exec();
             res.render('topist/index', { data: _topist });
@@ -77,7 +77,7 @@ app.get('/topist/:id', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('Page not found');
+    res.render('error');
 });
 
 app.listen(app.get('port'), () => console.log('Topist started successfully!'));
