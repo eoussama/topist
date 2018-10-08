@@ -1,11 +1,12 @@
 const
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    app = express(),
-    faker = require('faker'),
-    topist = require('./models/topist'),
-    entry = require('./models/entry');
+    express             = require('express'),
+    bodyParser          = require('body-parser'),
+    expressSanitizer    = require('express-sanitizer'),
+    mongoose            = require('mongoose'),
+    app                 = express(),
+    topist              = require('./models/topist'),
+    entry               = require('./models/entry'),
+    faker               = require('faker');
 
 
 // Configuration ----------------------------------------------
