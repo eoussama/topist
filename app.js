@@ -5,18 +5,18 @@ const
     app = express(),
     faker = require('faker'),
     topist = require('./models/topist'),
-    entry = require('./models/entry'),
-    PORT = process.env.PORT || 3000;
+    entry = require('./models/entry');
 
 
 // Configuration ----------------------------------------------
 
+app.set('port', process.env.PORT || 3000);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 
-
+var count = 0;
 // Routes -----------------------------------------------------
 
 app.get('/', (req, res) => {
@@ -61,7 +61,7 @@ app.get('/topist/new', (req, res) => {
 });
 
 app.get('/topist/:id', (req, res) => {
-    const __id = req.params.id;
+    const __id = req.params.id; ++count;
 
     topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
         if(err)
@@ -77,4 +77,4 @@ app.get('*', (req, res) => {
     res.send('Page not found');
 });
 
-app.listen(PORT, () => console.log('Topist started successfully!'));
+app.listen(app.get('port'), () => console.log('Topist started successfully!'));
