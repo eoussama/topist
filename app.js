@@ -104,6 +104,10 @@ app.get('/topist/:id', (req, res) => {
     });
 });
 
+app.post('/register', (req, res) => {
+    console.log('recieved');
+});
+
 app.get('*', (req, res) => {
     res.render('error');
 });

@@ -56,7 +56,7 @@
 		<div id="modal-register" class="modal">
 			<div class="modal-background"></div>
 			<div class="modal-card">
-				<form>
+				<form action="/register" method="POST">
 					<header class="modal-card-head">
 						<p class="modal-card-title">
 							<span class="icon"><i class="fas fa-user-plus"></i></span>
@@ -67,7 +67,7 @@
 					<section class="modal-card-body">
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="text" placeholder="Username">
+								<input class="input" type="text" placeholder="Username" required minlength="3" maxlength="25">
 								<span class="icon is-small is-left">
 									<i class="fas fa-user"></i>
 								</span>
@@ -75,7 +75,7 @@
 						</div>
 						<div class="field">
 							<p class="control has-icons-left has-icons-right">
-								<input class="input" type="email" placeholder="Email">
+								<input class="input" type="email" placeholder="Email" required minlength="3" maxlength="50">
 								<span class="icon is-small is-left">
 									<i class="fas fa-envelope"></i>
 								</span>
@@ -83,7 +83,7 @@
 						</div>
 						<div class="field">
 							<p class="control has-icons-left">
-								<input class="input" type="password" placeholder="Password">
+								<input class="input" type="password" placeholder="Password" required minlength="5" maxlength="30" id="primary-pass">
 								<span class="icon is-small is-left">
 									<i class="fas fa-lock"></i>
 								</span>
@@ -91,7 +91,7 @@
 						</div>
 						<div class="field">
 							<p class="control has-icons-left">
-								<input class="input" type="password" placeholder="Password confirmation">
+								<input class="input" type="password" placeholder="Password confirmation" required minlength="5" maxlength="30" id="secondary-pass">
 								<span class="icon is-small is-left">
 									<i class="fas fa-lock"></i>
 								</span>

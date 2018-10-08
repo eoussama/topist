@@ -8,7 +8,9 @@ window.addEventListener('load', () => {
         btnOpenModalRegister = document.getElementById('btn-modal-register'),
         btnCloseModalRegister = document.querySelector('#modal-register button.delete'),
         modalRegister = document.getElementById('modal-register'),
-        topists = document.querySelectorAll('div.tops-box');
+        topists = document.querySelectorAll('div.tops-box'),
+        primaryPass = document.getElementById('primary-pass'),
+        secondaryPass = document.getElementById('secondary-pass');
 
     btnBurger.addEventListener('click', () => {
         btnBurger.classList.toggle('is-active');
@@ -32,5 +34,16 @@ window.addEventListener('load', () => {
     });
 
     if(topists)
-        topists.forEach(topist => topist.addEventListener('click', () => window.location = `/topist/${topist.dataset.id}`))
+        topists.forEach(topist => topist.addEventListener('click', () => window.location = `/topist/${topist.dataset.id}`));
+    
+    function validatePassword() {
+        if(primaryPass.value != secondaryPass.value)
+            secondaryPass.setCustomValidity("Passwords don't match!");
+        else
+            secondaryPass.setCustomValidity('');
+    }
+    
+    primaryPass.addEventListener('change', validatePassword);
+    secondaryPass.addEventListener('change', validatePassword);
 });
+
