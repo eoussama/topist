@@ -4,11 +4,11 @@ const
     expressSanitizer        = require('express-sanitizer'),
     mongoose                = require('mongoose'),
     passport                = require('passport'),
-    passportLocal           = require('passport-local'),
-    passportLocalMongoose   = require('passport-local-mongoose'),
+    localStrategy           = require('passport-local'),
     app                     = express(),
-    topist                  = require('./models/topist'),
-    entry                   = require('./models/entry'),
+    Topist                  = require('./models/topist'),
+    Entry                   = require('./models/entry'),
+    User                    = require('./models/user'),
     faker                   = require('faker');
 
 
@@ -22,7 +22,7 @@ app.use(expressSanitizer());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(require('express-session')({
-	secret: "Some random string",
+	secret: "027e67fa-cafe-11e8-a8d5-f2801f1b9fd1",
 	resave: false,
 	saveUninitialized: false
 }));
@@ -30,17 +30,15 @@ app.use(require('express-session')({
 mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
-
-/*
-passport.use(new passportLocal(User.authenticate()));
-passport.serializeUser(User.serializeUser);
-passport.deserializeUser(User.deserializeUser);*/
+passport.use(new localStrategy(User.authenticate())); 
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 // Routes -----------------------------------------------------
 
 app.get('/', (req, res) => {
-    topist.find({}, (err, topists) => {
+    Topist.find({}, (err, topists) => {
         if(!err)
             res.render('index', {data: topists});
     });
@@ -51,7 +49,7 @@ app.post('/topist', (req, res) => {
     
     _topist.date = new Date(_topist.date);
 
-    topist.create(
+    Topist.create(
         {
             topic: _topist.topic,
             description: _topist.description,
@@ -60,7 +58,7 @@ app.post('/topist', (req, res) => {
         (err, topist) => {
             if(!err) {
                 _topist.entries.forEach(__entry => {
-                    const _entry = new entry({
+                    const _entry = new Entry({
                         position: __entry.position,
                         title: __entry.title,
                         subtitle: __entry.subtitle,
@@ -84,11 +82,11 @@ app.get('/topist/new', (req, res) => {
 app.get('/topist/:id', (req, res) => {
     const __id = req.params.id;
 
-    topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
+    Topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
         if(err)
             res.render('error');
         else {
-            topist.findOneAndUpdate({_id: __id}, {$inc : {'views' : 1}}).exec();
+            Topist.findOneAndUpdate({_id: __id}, {$inc : {'views' : 1}}).exec();
             res.render('topist/index', { data: _topist });
         }
     });

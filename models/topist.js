@@ -27,6 +27,6 @@ const
             }
         ]
     }),
-    topistModel = mongoose.model("topist", topistSchema);
+    topistModel = mongoose.model("topists", topistSchema);
 
 module.exports = topistModel;

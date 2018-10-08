@@ -1,12 +1,12 @@
 const
     mongoose = require('mongoose'),
-    entriesSchema = mongoose.Schema({
+    entrySchema = mongoose.Schema({
         position: Number,
         title: String,
         subtitle: String,
         picture: String,
         description: String
     }),
-    entriesModel = mongoose.model("entries", entriesSchema);
+    entryModel = mongoose.model("entries", entrySchema);
 
-module.exports = entriesModel;
+module.exports = entryModel;
