@@ -19,6 +19,8 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(require('express-session')({
 	secret: "Some random string",
 	resave: false,
@@ -29,12 +31,10 @@ mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true }
 mongoose.set('useFindAndModify', false);
 
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new localStrategy(User.authenticate()));
+/*
+passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser);
-passport.deserializeUser(User.deserializeUser);
+passport.deserializeUser(User.deserializeUser);*/
 
 
 // Routes -----------------------------------------------------
