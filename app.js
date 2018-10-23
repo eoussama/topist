@@ -17,7 +17,7 @@ const
 app.set('port', process.env.PORT || 3000);
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSanitizer());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -52,7 +52,7 @@ function isLoggedIn(req, res, next) {
 app.get('/', (req, res) => {
     Topist.find({}, (err, topists) => {
         if(!err)
-            res.render('index', {data: topists});
+            res.render('index', { data: topists });
     });
 });
 
@@ -61,13 +61,11 @@ app.post('/topist', isLoggedIn, (req, res) => {
     
     _topist.date = new Date(_topist.date);
 
-    Topist.create(
-        {
+    Topist.create({
             topic: _topist.topic,
             description: _topist.description,
             user: _topist.use
-        },
-        (err, topist) => {
+        }, (err, topist) => {
             if(!err) {
                 _topist.entries.forEach(__entry => {
                     const _entry = new Entry({
@@ -98,7 +96,7 @@ app.get('/topist/:id', (req, res) => {
         if(err)
             res.render('error');
         else {
-            Topist.findOneAndUpdate({_id: __id}, {$inc : {'views' : 1}}).exec();
+            Topist.findOneAndUpdate({ _id: __id }, {$inc : { 'views' : 1 }}).exec();
             res.render('topist/index', { data: _topist });
         }
     });
