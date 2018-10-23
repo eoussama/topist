@@ -102,7 +102,7 @@ app.get('/topist/:id', (req, res) => {
     });
 });
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/error' }));
 
 app.post('/register', (req, res) => {
     User.register({
