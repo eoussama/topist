@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/topistdb', { useNewUrlParser: true }
 
     // Logging a message.
     console.log("Seeding the database...");
-    
+
     // Seeding lists.
     seedLists(20).then(() => {
 
@@ -38,6 +38,7 @@ function seedLists(count) {
     return new Promise((resolve, reject) => {
 
         const lists = listGenerator.generateLists(count);
+        let insertedLists = 0;
 
         // Looping through the lists.
         lists.forEach((list, index) => {
@@ -56,38 +57,40 @@ function seedLists(count) {
                 if (!err) {
 
                     // Looping through each list's entries.
-                    list.entries.forEach(entry => {
+                    list.entries.forEach((_entry, _index) => {
 
                         // Inserting each entry in the database.
-                        Entry.create({
-                            position: entry.position,
-                            title: entry.title,
-                            subtitle: entry.subtitle,
-                            picture: entry.picture,
-                            description: entry.description
-                        }, (err, createdEntry) => {
-
-                            if (!err) {
-
-                                // Pushing the created entry to the list.
-                                createdList.entries.push(createdEntry);
-
-                            } else {
-
-                                // Printing the error.
-                                console.error(`[Seeding Error]: ${err}.`);
-                            }
+                        entry = new Entry({
+                            position: _entry.position,
+                            title: _entry.title,
+                            subtitle: _entry.subtitle,
+                            picture: _entry.picture,
+                            description: _entry.description
                         });
+
+                        // Saving each entry to the database.
+                        entry.save();
+
+                        // Pushing the created entry to the list.
+                        createdList.entries.push(entry);
                     });
 
+                    // For some reason, if nothing is printed at this point,
+                    // some lists with have no entries. Weird.
+                    console.log(`List ${index + 1} inserted!`);
+
+                    // Saving the lists with the updated entries.
                     createdList.save();
+
+                    // Incrementing the inserted lists' count.
+                    insertedLists++;
                 } else {
 
                     // Printing the error.
                     console.error(`[Seeding Error]: ${err}.`);
                 }
 
-                if (index + 1 === count) {
+                if (insertedLists === count) {
 
                     resolve();
                 }
