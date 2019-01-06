@@ -2,7 +2,76 @@
 
 <section class="section">
 	<div class="container">
-		
+
+		<!-- Displayed if no list is found in the database. -->
+		<% if(!lists.length) { %>
+		<div class="box such-empty">
+			<div class="content has-text-centered">
+				<h2 class="subtitle has-text-info">
+					<span class="icon is-medium">
+						<i class="fa fa-frown"></i>
+					</span>
+					<span>Such Empty</span>
+				</h2>
+				<hr>
+				<p>Be the first to create a Topist</p>
+				<a href="/topist/new" class="button is-info">Create a Topist</a>
+			</div>
+		</div>
+		<% } %>
+
+		<!-- Dispalyed if valid lists found in the database. -->
+		<% lists.forEach(dt => { %>
+		<div class="box tops-box" data-id="<%= dt._id %>">
+			<article class="media">
+				<div class="media-left">
+					<div class="topbox">
+						<span class="label">top</span>
+						<span class="value">
+							<%= dt.entries.length %></span>
+					</div>
+				</div>
+				<div class="media-content">
+					<div class="content">
+						<p>
+							<strong>TOP
+								<%= dt.entries.length %>
+								<%= dt.topic %></strong> <small>
+								<%= dt.user %></small> <small>
+								<%= dt.date.toLocaleDateString() %></small>
+							<br>
+							<%= dt.description.slice(0, 100) %>...
+						</p>
+					</div>
+					<nav class="level is-mobile">
+						<div class="level-left">
+							<a class="level-item" aria-label="reply">
+								<span class="icon is-medium">
+									<i class="fas fa-arrow-alt-circle-up" aria-hidden="true"></i>
+								</span>
+								<span>
+									<%= dt.upvotes %></span>
+							</a>
+							<a class="level-item" aria-label="retweet">
+								<span class="icon is-medium">
+									<i class="fas fa-arrow-alt-circle-down" aria-hidden="true"></i>
+								</span>
+								<span>
+									<%= dt.downvotes %></span>
+							</a>
+							<a class="level-item" aria-label="like">
+								<span class="icon is-medium">
+									<i class="fas fa-eye" aria-hidden="true"></i>
+								</span>
+								<span>
+									<%= dt.views %></span>
+							</a>
+						</div>
+					</nav>
+				</div>
+			</article>
+		</div>
+		<% }); %>
 	</div>
 </section>
 

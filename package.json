@@ -5,6 +5,7 @@
 	"main": "app.js",
 	"scripts": {
 		"install": "npm install && bower install",
+		"seed": "node seed/index.js",
 		"start": "node app.js",
 		"dev": "npx nodemon"
 	},
@@ -26,9 +27,11 @@
 	"homepage": "https://github.com/EOussama/topist#readme",
 	"dependencies": {
 		"ejs": "^2.6.1",
-		"express": "^4.16.4"
+		"express": "^4.16.4",
+		"mongoose": "^5.4.2"
 	},
 	"devDependencies": {
+		"faker": "^4.1.0",
 		"nodemon": "^1.18.9"
 	}
 }

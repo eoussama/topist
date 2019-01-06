@@ -17,9 +17,11 @@
 const
 	path = require('path'),
 	express = require('express'),
+	mongoose = require('mongoose'),
 	app = express(),
 	routers = {
-		index: require('./routes/index')
+		index: require('./routes/index'),
+		topist: require('./routes/topist')
 	};
 
 
@@ -29,6 +31,10 @@ app.set('ip', process.env.IP || '127.0.0.1');
 app.set("view engine", "ejs");
 
 
+// Connecting to the database.
+mongoose.connect('mongodb://localhost:27017/topistdb', { useNewUrlParser: true });
+
+
 // Static assets.
 app.use('/assets', express.static(path.join(__dirname + '/public')));
 app.use('/assets', express.static(path.join(__dirname + '/bower_components')));
@@ -36,6 +42,7 @@ app.use('/assets', express.static(path.join(__dirname + '/bower_components')));
 
 // Routing.
 app.use(routers.index);
+app.use('/topist', routers.topist);
 
 
 // Error redirecting.
