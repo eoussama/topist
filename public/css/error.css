@@ -1,0 +1,22 @@
+/**
+ * The error page's stylesheet.
+ */
+
+body {
+    overflow: hidden;
+}
+
+section {
+    border: 1px solid;
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+div.box {
+    width: 600px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 100%);
+}

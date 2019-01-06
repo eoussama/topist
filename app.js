@@ -1,120 +1,54 @@
+/**
+ * 
+ * @name:       Topist
+ * @version:    1.0.0
+ * @author:     EOussama
+ * @license     MIT
+ * @source:     https://github.com/EOussama/topist
+ * 
+ * Topist is an open platform for creating all sorts of TOP X lists, 
+ * you know, the same crappy lists that WatchMojo is famous for, 
+ * it doesn't matter what genre a list is about, Topist is there to house it, 
+ * hopefully there is no excessive controversy out of this one, one can only wish.
+ * 
+ */
+
+// Importing the dependancies.
 const
-    express                 = require('express'),
-    bodyParser              = require('body-parser'),
-    expressSanitizer        = require('express-sanitizer'),
-    mongoose                = require('mongoose'),
-    passport                = require('passport'),
-    localStrategy           = require('passport-local'),
-    app                     = express(),
-    Topist                  = require('./models/topist'),
-    Entry                   = require('./models/entry'),
-    User                    = require('./models/user'),
-    faker                   = require('faker');
+	path = require('path'),
+	express = require('express'),
+	app = express(),
+	routers = {
+		index: require('./routes/index')
+	};
 
 
-// Configuration ----------------------------------------------
-
+// Setting up the app.
 app.set('port', process.env.PORT || 3000);
+app.set('ip', process.env.IP || '127.0.0.1');
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressSanitizer());
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(require('express-session')({
-	secret: "027e67fa-cafe-11e8-a8d5-f2801f1b9fd1",
-	resave: false,
-	saveUninitialized: false
-}));
-app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    return next();
-});
-
-mongoose.connect('mongodb://localhost:27017/topistDB', { useNewUrlParser: true });
-mongoose.set('useFindAndModify', false);
-
-passport.use(new localStrategy(User.authenticate())); 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated())
-        return next();
-
-    res.redirect('/');
-}
+// Static assets.
+app.use('/assets', express.static(path.join(__dirname + '/public')));
+app.use('/assets', express.static(path.join(__dirname + '/bower_components')));
 
 
-// Routes -----------------------------------------------------
+// Routing.
+app.use(routers.index);
 
-app.get('/', (req, res) => {
-    Topist.find({}, (err, topists) => {
-        if(!err)
-            res.render('index', { data: topists });
-    });
-});
 
-app.post('/topist', isLoggedIn, (req, res) => {
-    const _topist = JSON.parse(req.sanitize(req.body.topist));
-    
-    _topist.date = new Date(_topist.date);
-
-    Topist.create({
-            topic: _topist.topic,
-            description: _topist.description,
-            user: _topist.use
-        }, (err, topist) => {
-            if(!err) {
-                _topist.entries.forEach(__entry => {
-                    const _entry = new Entry({
-                        position: __entry.position,
-                        title: __entry.title,
-                        subtitle: __entry.subtitle,
-                        picture: __entry.picture,
-                        description: __entry.description
-                    });
-
-                    topist.entries.push(_entry);
-                    _entry.save();
-                });
-
-                topist.save();
-            }
-        });
-});
-
-app.get('/topist/new', isLoggedIn, (req, res) => {
-    res.render('topist/new');
-});
-
-app.get('/topist/:id', (req, res) => {
-    const __id = req.params.id;
-
-    Topist.findOne({ _id: __id }).populate('entries').exec((err, _topist) => {
-        if(err)
-            res.render('error');
-        else {
-            Topist.findOneAndUpdate({ _id: __id }, {$inc : { 'views' : 1 }}).exec();
-            res.render('topist/index', { data: _topist });
-        }
-    });
-});
-
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/error' }));
-
-app.post('/register', (req, res) => {
-    User.register({
-        username: req.sanitize(req.body.user.username),
-        email: req.sanitize(req.body.user.email),
-    }, req.sanitize(req.body.user.password));
-
-    res.redirect('/');
-});
-
+// Error redirecting.
 app.get('*', (req, res) => {
-    res.render('error');
+
+	// Rendering the error.ejs template.
+	return res.render('error');
 });
 
-app.listen(app.get('port'), () => console.log('Topist started successfully!'));
+
+// Listening.
+app.listen(app.get('port'), app.get('ip'), () => {
+
+	// Logging.
+	console.log(`Topist has successfully started on port ${app.get('port')}`);
+});
