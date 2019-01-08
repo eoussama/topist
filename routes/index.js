@@ -6,7 +6,7 @@ const
 
 
 // Setting up the route.
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
 
 	List.find({}, (err, lists) => {
 
