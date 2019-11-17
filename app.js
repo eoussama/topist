@@ -15,6 +15,7 @@
 
 // Importing the dependancies.
 const
+	env = require('dotenv-extended').load({ overrideProcessEnv: true, path: './config/.env' }),
 	path = require('path'),
 	express = require('express'),
 	mongoose = require('mongoose'),
@@ -24,7 +25,8 @@ const
 		topist: require('./routes/topist')
 	};
 
-
+console.log({ ...process.env });
+console.log({ env });
 // Setting up the app.
 app.set('port', process.env.PORT || 3000);
 app.set('ip', process.env.IP || '127.0.0.1');

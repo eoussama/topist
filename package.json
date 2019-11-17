@@ -26,6 +26,7 @@
 	},
 	"homepage": "https://github.com/EOussama/topist#readme",
 	"dependencies": {
+		"dotenv-extended": "^2.5.0",
 		"ejs": "^2.6.1",
 		"express": "^4.16.4",
 		"mongoose": "^5.4.2"
