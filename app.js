@@ -13,6 +13,8 @@
  * 
  */
 
+
+
 // Importing the dependancies.
 const
 	env = require('dotenv-extended').load({ overrideProcessEnv: true, path: './config/.env' }),
@@ -35,7 +37,7 @@ app.set("view engine", "ejs");
 
 
 // Connecting to the database.
-mongoose.connect(`mongodb://${app.get('db_host')}:${app.get('db_port')}/${app.get('db_name')}`, { useNewUrlParser: true });
+// mongoose.connect(`mongodb://${app.get('db_host')}:${app.get('db_port')}/${app.get('db_name')}`, { useNewUrlParser: true });
 
 
 // Static assets.

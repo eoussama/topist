@@ -1,8 +1,8 @@
 // Importing the dependancies.
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 // Creating a list schema.
-const listSchema = mongoose.Schema({
+var listSchema = mongoose.Schema({
     topic: String,
     description: String,
     date: {

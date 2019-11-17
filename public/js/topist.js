@@ -3,56 +3,56 @@
  */
 
 // Waiting for the window to load.
-window.addEventListener('load', () => {
+window.addEventListener('load', function () {
 
-    // Getting the host container.
-    const topistEntriesContainer = document.getElementById('topist-entries-entainer');
+	// Getting the host container.
+	var topistEntriesContainer = document.getElementById('topist-entries-entainer');
 
-    if (topistEntriesContainer) {
-        const
-            topistCounter = document.getElementById('topist-counter'),
-            formTopist = document.getElementById('form-topist');
+	if (topistEntriesContainer) {
+		var
+			topistCounter = document.getElementById('topist-counter'),
+			formTopist = document.getElementById('form-topist');
 
-        var topistEntriesNumber = parseInt(topistCounter.value);
+		var topistEntriesNumber = parseInt(topistCounter.value);
 
-        topistCounter.addEventListener('change', () => {
-            topistEntriesNumber = parseInt(topistCounter.value);
+		topistCounter.addEventListener('change', function () {
+			topistEntriesNumber = parseInt(topistCounter.value);
 
-            updateEntryInputs();
-        });
+			updateEntryInputs();
+		});
 
-        formTopist.addEventListener('submit', (e) => {
-            e.preventDefault();
+		formTopist.addEventListener('submit', function (e) {
+			e.preventDefault();
 
-            const
-                topist = {
-                    topic: document.getElementById('topic-title').value,
-                    description: document.getElementById('topic-description').value,
-                    date: new Date(),
-                    user: 'admin',
-                    upvotes: 0,
-                    downvotes: 0,
-                    views: 0,
-                    entries: getEntries()
-                },
-                xhr = new XMLHttpRequest();
+			var
+				topist = {
+					topic: document.getElementById('topic-title').value,
+					description: document.getElementById('topic-description').value,
+					date: new Date(),
+					user: 'admin',
+					upvotes: 0,
+					downvotes: 0,
+					views: 0,
+					entries: getEntries()
+				},
+				xhr = new XMLHttpRequest();
 
-            xhr.open("POST", '/topist', true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send(`topist=${JSON.stringify(topist)}`);
-            window.location = '/';
-        });
+			xhr.open("POST", '/topist', true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send(`topist=${JSON.stringify(topist)}`);
+			window.location = '/';
+		});
 
-        formTopist.addEventListener('reset', () => {
-            topistEntriesNumber = 10;
-            updateEntryInputs();
-        });
+		formTopist.addEventListener('reset', function () {
+			topistEntriesNumber = 10;
+			updateEntryInputs();
+		});
 
-        function updateEntryInputs() {
-            topistEntriesContainer.innerHTML = "";
+		function updateEntryInputs() {
+			topistEntriesContainer.innerHTML = "";
 
-            for (let i = 0; i < topistEntriesNumber; i++) {
-                topistEntriesContainer.innerHTML += `
+			for (var i = 0; i < topistEntriesNumber; i++) {
+				topistEntriesContainer.innerHTML += `
                     <nav class="level">
                         <div class="level-left">
                             <div class="level-item has-text-centered">
@@ -94,25 +94,25 @@ window.addEventListener('load', () => {
                         </div>
                     </nav>
                     ${i === topistEntriesNumber - 1 ? '' : '<hr>'}`;
-            }
-        }
+			}
+		}
 
-        function getEntries() {
-            var _entries = [];
+		function getEntries() {
+			var _entries = [];
 
-            for (let i = 0; i < topistEntriesNumber; i++) {
-                _entries.push({
-                    position: i + 1,
-                    title: document.querySelector(`[data-entry-title="${i + 1}"]`).value,
-                    subtitle: document.querySelector(`[data-entry-subtitle="${i + 1}"]`).value,
-                    picture: document.querySelector(`[data-entry-picture="${i + 1}"]`).value,
-                    description: document.querySelector(`[data-entry-description="${i + 1}"]`).value
-                });
-            }
+			for (var i = 0; i < topistEntriesNumber; i++) {
+				_entries.push({
+					position: i + 1,
+					title: document.querySelector(`[data-entry-title="${i + 1}"]`).value,
+					subtitle: document.querySelector(`[data-entry-subtitle="${i + 1}"]`).value,
+					picture: document.querySelector(`[data-entry-picture="${i + 1}"]`).value,
+					description: document.querySelector(`[data-entry-description="${i + 1}"]`).value
+				});
+			}
 
-            return _entries;
-        }
+			return _entries;
+		}
 
-        updateEntryInputs();
-    }
+		updateEntryInputs();
+	}
 });

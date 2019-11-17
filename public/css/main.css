@@ -2,90 +2,95 @@
  * Topist's main stylesheet.
  */
 
-
 div.tops-box:first-of-type {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 div.tops-box {
-    cursor: pointer;
-    transition-property: background-color;
-    transition-duration: .3s;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  transition-property: background-color;
 }
 
 div.tops-box:hover {
-    background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 /* #region topbox */
-div.topbox, div.topbox-pos {
-    align-items: center;
-    background-color: #209bee;
-    border: 1px solid #3273dc;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100px;
-    position: relative;
-    width: 100px;
+div.topbox,
+div.topbox-pos {
+  align-items: center;
+  background-color: #209bee;
+  border: 1px solid #3273dc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  position: relative;
+  width: 100px;
 }
 
-div.topbox span.value, div.topbox span.label, div.topbox-pos span.value {
-    color: #f4f4f4;
-    font-weight: bold;
+div.topbox span.value,
+div.topbox span.label,
+div.topbox-pos span.value {
+  color: #f4f4f4;
+  font-weight: bold;
 }
 
 div.topbox span.label {
-    position: absolute;
-    top: 15%;
-    text-transform: uppercase;
+  position: absolute;
+  text-transform: uppercase;
+  top: 15%;
 }
 
-div.topbox span.value, div.topbox-pos span.value {
-    font-size: 50px;
-    position: absolute;
-    top: 20%;
+div.topbox span.value,
+div.topbox-pos span.value {
+  font-size: 50px;
+  position: absolute;
+  top: 20%;
 }
 div.topbox-pos span.value {
-    font-size: 50px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 div.topbox-pos.pos-3 {
-    background-color: silver;
-    border-color: silver;
+  background-color: silver;
+  border-color: silver;
 }
 
 div.topbox-pos.pos-2 {
-    background-color: #ff5e00;
-    border-color: #ff5e00;
+  background-color: #ff5e00;
+  border-color: #ff5e00;
 }
 
 div.topbox-pos.pos-1 {
-    background-color: gold;
-    border-color: gold;
+  background-color: gold;
+  border-color: gold;
 }
 /* #endregion */
 
 .message a {
-    text-decoration: none !important;
-    transition-property: color;
-    transition-duration: .3s;
+  text-decoration: none !important;
+  transition-duration: 0.3s;
+  transition-property: color;
 }
 
 .message a:hover {
-    color: #bee4fd !important;
+  color: #bee4fd !important;
 }
 
-.topist-list .card, .topist-list .message, .topist-list .box {
-    margin: auto;
-    max-width: 800px;
+.topist-list .card,
+.topist-list .message,
+.topist-list .box {
+  margin: auto;
+  max-width: 800px;
 }
 
 .such-empty {
-    margin: auto;
-    max-width: 600px;
+  margin: auto;
+  max-width: 600px;
 }
