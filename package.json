@@ -6,7 +6,7 @@
   "scripts": {
     "seed": "node ./seed/index.js",
     "start": "node ./bin/www",
-    "dev": "npx nodemon ./bin/www"
+    "dev": "npx nodemon --legacy-watch ./bin/www"
   },
   "repository": {
     "type": "git",

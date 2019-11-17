@@ -42,11 +42,9 @@ app.use('/assets', express.static(path.join(__dirname + '/public')));
 app.use('/assets/bulma', express.static(path.join(__dirname + '/node_modules/bulma/css')));
 app.use('/assets/fontawesome', express.static(path.join(__dirname + '/node_modules/@fortawesome/fontawesome-free/css')));
 
-
 // Routing.
 app.use(routers.index);
 app.use('/topist', routers.topist);
-
 
 // Error redirecting.
 app.get('*', (req, res) => {

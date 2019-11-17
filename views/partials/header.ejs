@@ -6,236 +6,236 @@
 
 <head>
 
-    <!-- Meta data. -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible"
-          content="ie=edge">
-    <meta name="author"
-          content="EOussama">
-    <meta name="application-name"
-          content="Topist">
-    <meta name="description"
-          content="A welcoming platform for all of those professional and silly TOP X lists.">
-    <meta name="keywords"
-          content="Website, Topist, Top lists, TOPs">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+	<!-- Meta data. -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible"
+				content="ie=edge">
+	<meta name="author"
+				content="EOussama">
+	<meta name="application-name"
+				content="Topist">
+	<meta name="description"
+				content="A welcoming platform for all of those professional and silly TOP X lists.">
+	<meta name="keywords"
+				content="Website, Topist, Top lists, TOPs">
+	<meta name="viewport"
+				content="width=device-width, initial-scale=1.0">
 
-    <!-- The favicon. -->
-    <link rel="icon"
-          href="/assets/img/favicon.png">
+	<!-- The favicon. -->
+	<link rel="icon"
+				href="/assets/img/favicon.png">
 
-    <!-- Font Awesome. -->
-    <link rel="stylesheet"
-          href="/assets/fontawesome/fontawesome.min.css">
+	<!-- Font Awesome. -->
+	<link rel="stylesheet"
+				href="/assets/fontawesome/fontawesome.min.css">
 
-    <!-- Bulma. -->
-    <link rel="stylesheet"
-          href="/assets/bulma/bulma.min.css">
+	<!-- Bulma. -->
+	<link rel="stylesheet"
+				href="/assets/bulma/bulma.min.css">
 
-    <!-- The main stylesheet. -->
-    <link rel="stylesheet"
-          href="/assets/css/main.css">
+	<!-- The main stylesheet. -->
+	<link rel="stylesheet"
+				href="/assets/css/main.css">
 
-    <!-- The title. -->
-    <title>Topist</title>
+	<!-- The title. -->
+	<title>Topist</title>
 </head>
 
 <body>
 
-    <!-- The login modal. -->
-    <div id="modal-login"
-         class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <form action="/login"
-                  method="POST">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">
-                        <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
-                        <span>Login</span>
-                    </p>
-                    <button class="delete"
-                            aria-label="close"></button>
-                </header>
-                <section class="modal-card-body">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input name="username"
-                                   class="input"
-                                   type="text"
-                                   placeholder="Username">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input name="password"
-                                   class="input"
-                                   type="password"
-                                   placeholder="Password">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button is-success">Login</button>
-                </footer>
-            </form>
-        </div>
-    </div>
+	<!-- The login modal. -->
+	<div id="modal-login"
+			 class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-card">
+			<form action="/login"
+						method="POST">
+				<header class="modal-card-head">
+					<p class="modal-card-title">
+						<span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+						<span>Login</span>
+					</p>
+					<button class="delete"
+									aria-label="close"></button>
+				</header>
+				<section class="modal-card-body">
+					<div class="field">
+						<p class="control has-icons-left has-icons-right">
+							<input name="username"
+										 class="input"
+										 type="text"
+										 placeholder="Username">
+							<span class="icon is-small is-left">
+								<i class="fas fa-user"></i>
+							</span>
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input name="password"
+										 class="input"
+										 type="password"
+										 placeholder="Password">
+							<span class="icon is-small is-left">
+								<i class="fas fa-lock"></i>
+							</span>
+						</p>
+					</div>
+				</section>
+				<footer class="modal-card-foot">
+					<button class="button is-success">Login</button>
+				</footer>
+			</form>
+		</div>
+	</div>
 
-    <!-- The registration modal. -->
-    <div id="modal-register"
-         class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <form action="/register"
-                  method="POST">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">
-                        <span class="icon"><i class="fas fa-user-plus"></i></span>
-                        <span>Register</span>
-                    </p>
-                    <button class="delete"
-                            aria-label="close"></button>
-                </header>
-                <section class="modal-card-body">
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input name="user[username]"
-                                   class="input"
-                                   type="text"
-                                   placeholder="Username"
-                                   required
-                                   minlength="3"
-                                   maxlength="25">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input name="user[email]"
-                                   class="input"
-                                   type="email"
-                                   placeholder="Email"
-                                   required
-                                   minlength="3"
-                                   maxlength="50">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input name="user[password]"
-                                   class="input"
-                                   type="password"
-                                   placeholder="Password"
-                                   required
-                                   minlength="5"
-                                   maxlength="30"
-                                   id="primary-pass">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input"
-                                   type="password"
-                                   placeholder="Password confirmation"
-                                   required
-                                   minlength="5"
-                                   maxlength="30"
-                                   id="secondary-pass">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button is-success">Register</button>
-                </footer>
-            </form>
-        </div>
-    </div>
+	<!-- The registration modal. -->
+	<div id="modal-register"
+			 class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-card">
+			<form action="/register"
+						method="POST">
+				<header class="modal-card-head">
+					<p class="modal-card-title">
+						<span class="icon"><i class="fas fa-user-plus"></i></span>
+						<span>Register</span>
+					</p>
+					<button class="delete"
+									aria-label="close"></button>
+				</header>
+				<section class="modal-card-body">
+					<div class="field">
+						<p class="control has-icons-left has-icons-right">
+							<input name="user[username]"
+										 class="input"
+										 type="text"
+										 placeholder="Username"
+										 required
+										 minlength="3"
+										 maxlength="25">
+							<span class="icon is-small is-left">
+								<i class="fas fa-user"></i>
+							</span>
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left has-icons-right">
+							<input name="user[email]"
+										 class="input"
+										 type="email"
+										 placeholder="Email"
+										 required
+										 minlength="3"
+										 maxlength="50">
+							<span class="icon is-small is-left">
+								<i class="fas fa-envelope"></i>
+							</span>
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input name="user[password]"
+										 class="input"
+										 type="password"
+										 placeholder="Password"
+										 required
+										 minlength="5"
+										 maxlength="30"
+										 id="primary-pass">
+							<span class="icon is-small is-left">
+								<i class="fas fa-lock"></i>
+							</span>
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input"
+										 type="password"
+										 placeholder="Password confirmation"
+										 required
+										 minlength="5"
+										 maxlength="30"
+										 id="secondary-pass">
+							<span class="icon is-small is-left">
+								<i class="fas fa-lock"></i>
+							</span>
+						</p>
+					</div>
+				</section>
+				<footer class="modal-card-foot">
+					<button class="button is-success">Register</button>
+				</footer>
+			</form>
+		</div>
+	</div>
 
-    <!-- The header. -->
-    <header class="hero is-info is-bold is-large">
+	<!-- The header. -->
+	<header class="hero is-info is-bold is-large">
 
-        <!-- The hero's head. -->
-        <div class="hero-head">
+		<!-- The hero's head. -->
+		<div class="hero-head">
 
-            <!-- The navbar. -->
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a href="/"
-                           class="navbar-item">
-                            <img src="/assets/img/favicon.png"
-                                 alt="Logo">
-                        </a>
-                        <span id="btn-burger"
-                              class="navbar-burger burger"
-                              data-target="navbarMenuHeroB">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenuHeroB"
-                         class="navbar-menu">
-                        <div class="navbar-end">
-                            <a href="/"
-                               class="navbar-item is-active">Home</a>
-                            <a href="/topist/new"
-                               class="navbar-item">
-                                <span class="icon is-medium">
-                                    <i class="fa fa-plus"></i>
-                                </span>
-                                <span>Create a topist</span>
-                            </a>
-                            <a id="btn-modal-register"
-                               class="navbar-item">Logout</a>
-                            <a id="btn-modal-login"
-                               class="navbar-item">Login</a>
-                            <a id="btn-modal-register"
-                               class="navbar-item">Register</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+			<!-- The navbar. -->
+			<nav class="navbar">
+				<div class="container">
+					<div class="navbar-brand">
+						<a href="/"
+							 class="navbar-item">
+							<img src="/assets/img/favicon.png"
+									 alt="Logo">
+						</a>
+						<span id="btn-burger"
+									class="navbar-burger burger"
+									data-target="navbarMenuHeroB">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</div>
+					<div id="navbarMenuHeroB"
+							 class="navbar-menu">
+						<div class="navbar-end">
+							<a href="/"
+								 class="navbar-item is-active">Home</a>
+							<a href="/topist/new"
+								 class="navbar-item">
+								<span class="icon is-medium">
+									<i class="fa fa-plus"></i>
+								</span>
+								<span>Create a topist</span>
+							</a>
+							<a id="btn-modal-register"
+								 class="navbar-item">Logout</a>
+							<a id="btn-modal-login"
+								 class="navbar-item">Login</a>
+							<a id="btn-modal-register"
+								 class="navbar-item">Register</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
 
-        <!-- The hero's body. -->
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">Topist</p>
-                <p class="subtitle">A welcoming platform for all of those professional and silly TOP X lists.</p>
-            </div>
-        </div>
+		<!-- The hero's body. -->
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<p class="title">Topist</p>
+				<p class="subtitle">A welcoming platform for all of those professional and silly TOP X lists.</p>
+			</div>
+		</div>
 
-        <!-- The hero's foot. -->
-        <div class="hero-foot">
-            <nav class="tabs is-boxed is-fullwidth">
-                <div class="container">
-                    <ul>
-                        <li class="is-active"><a>Most popular</a></li>
-                        <li><a>Most viewed</a></li>
-                        <li><a>Oldest</a></li>
-                        <li><a>Recent</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+		<!-- The hero's foot. -->
+		<div class="hero-foot">
+			<nav class="tabs is-boxed is-fullwidth">
+				<div class="container">
+					<ul>
+						<li class="is-active"><a>Most popular</a></li>
+						<li><a>Most viewed</a></li>
+						<li><a>Oldest</a></li>
+						<li><a>Recent</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
