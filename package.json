@@ -29,7 +29,7 @@
 		"dotenv-extended": "^2.5.0",
 		"ejs": "^2.6.1",
 		"express": "^4.16.4",
-		"mongoose": "^5.4.2"
+		"mongoose": "^5.7.11"
 	},
 	"devDependencies": {
 		"faker": "^4.1.0",
