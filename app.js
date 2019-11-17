@@ -25,16 +25,17 @@ const
 		topist: require('./routes/topist')
 	};
 
-console.log({ ...process.env });
-console.log({ env });
 // Setting up the app.
-app.set('port', process.env.PORT || 3000);
-app.set('ip', process.env.IP || '127.0.0.1');
+app.set('ws_port', env.WS_PORT || 3000);
+app.set('ws_host', env.WS_HOST || '127.0.0.1');
+app.set('db_host', env.DB_HOST || 'localhost');
+app.set('db_name', env.DB_NAME || 'topistdb');
+app.set('db_port', env.DB_PORT || 27017);
 app.set("view engine", "ejs");
 
 
 // Connecting to the database.
-mongoose.connect('mongodb://localhost:27017/topistdb', { useNewUrlParser: true });
+mongoose.connect(`mongodb://${app.get('db_host')}:${app.get('db_port')}/${app.get('db_name')}`, { useNewUrlParser: true });
 
 
 // Static assets.
@@ -56,8 +57,8 @@ app.get('*', (req, res) => {
 
 
 // Listening.
-app.listen(app.get('port'), app.get('ip'), () => {
+app.listen(app.get('ws_port'), app.get('ws_host'), () => {
 
 	// Logging.
-	console.log(`Topist has successfully started on port ${app.get('port')}`);
+	console.log(`Topist has successfully started on port ${app.get('ws_port')}`);
 });
