@@ -12,7 +12,8 @@ window.addEventListener('load', function () {
 		// Adding a click handler.
 		lists.forEach((list) => {
 			list.addEventListener('click', function () {
-				window.location = `/topist/${list.dataset.id}`);
+				window.location = `/topist/${list.dataset.id}`;
+			});
 		});
 	}
 });

@@ -8,14 +8,15 @@ const
 // Setting up the route.
 router.get('/', function (req, res) {
 
-	List.find({}, (err, lists) => {
+	res.render('index', { lists: [] });
+	// List.find({}, (err, lists) => {
 
-		if (!err) {
+	// 	if (!err) {
 
-			// Rendering the index.ejs template.
-			res.render('index', { lists });
-		}
-	});
+	// 		// Rendering the index.ejs template.
+	// 		res.render('index', { lists });
+	// 	}
+	// });
 });
 
 
