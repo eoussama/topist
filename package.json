@@ -1,38 +1,39 @@
 {
-	"name": "topist",
-	"version": "1.0.0",
-	"description": "A welcoming platform for all of those professional and silly TOP X lists.",
-	"main": "app.js",
-	"scripts": {
-		"install": "npm install && bower install",
-		"seed": "node ./seed/index.js",
-		"start": "node ./bin/www",
-		"dev": "npx nodemon ./bin/www"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/EOussama/topist.git"
-	},
-	"keywords": [
-		"Website",
-		"Topist",
-		"Top lists",
-		"TOPs"
-	],
-	"author": "EOussama",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/EOussama/topist/issues"
-	},
-	"homepage": "https://github.com/EOussama/topist#readme",
-	"dependencies": {
-		"dotenv-extended": "^2.5.0",
-		"ejs": "^2.6.1",
-		"express": "^4.16.4",
-		"mongoose": "^5.7.11"
-	},
-	"devDependencies": {
-		"faker": "^4.1.0",
-		"nodemon": "^1.18.9"
-	}
+  "name": "topist",
+  "version": "1.0.0",
+  "description": "A welcoming platform for all of those professional and silly TOP X lists.",
+  "main": "app.js",
+  "scripts": {
+    "seed": "node ./seed/index.js",
+    "start": "node ./bin/www",
+    "dev": "npx nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOussama/topist.git"
+  },
+  "keywords": [
+    "Website",
+    "Topist",
+    "Top lists",
+    "TOPs"
+  ],
+  "author": "EOussama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EOussama/topist/issues"
+  },
+  "homepage": "https://github.com/EOussama/topist#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "bulma": "^0.7.2",
+    "dotenv-extended": "^2.5.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.7.11"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "nodemon": "^1.18.9"
+  }
 }

@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mongo:
+    container_name: topist-db
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+  app:
+    image: eoussama/topist:1.0.0
+    container_name: topist-app
+    restart: always
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/topist
+    depends_on:
+      - mongo

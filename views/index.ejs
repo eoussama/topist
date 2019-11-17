@@ -15,14 +15,16 @@
 				</h2>
 				<hr>
 				<p>Be the first to create a Topist</p>
-				<a href="/topist/new" class="button is-info">Create a Topist</a>
+				<a href="/topist/new"
+					 class="button is-info">Create a Topist</a>
 			</div>
 		</div>
 		<% } %>
 
 		<!-- Dispalyed if valid lists found in the database. -->
 		<% lists.forEach(dt => { %>
-		<div class="box tops-box" data-id="<%= dt._id %>">
+		<div class="box tops-box"
+				 data-id="<%= dt._id %>">
 			<article class="media">
 				<div class="media-left">
 					<div class="topbox">
@@ -45,23 +47,29 @@
 					</div>
 					<nav class="level is-mobile">
 						<div class="level-left">
-							<a class="level-item" aria-label="reply">
+							<a class="level-item"
+								 aria-label="reply">
 								<span class="icon is-medium">
-									<i class="fas fa-arrow-alt-circle-up" aria-hidden="true"></i>
+									<i class="fas fa-arrow-alt-circle-up"
+										 aria-hidden="true"></i>
 								</span>
 								<span>
 									<%= dt.upvotes %></span>
 							</a>
-							<a class="level-item" aria-label="retweet">
+							<a class="level-item"
+								 aria-label="retweet">
 								<span class="icon is-medium">
-									<i class="fas fa-arrow-alt-circle-down" aria-hidden="true"></i>
+									<i class="fas fa-arrow-alt-circle-down"
+										 aria-hidden="true"></i>
 								</span>
 								<span>
 									<%= dt.downvotes %></span>
 							</a>
-							<a class="level-item" aria-label="like">
+							<a class="level-item"
+								 aria-label="like">
 								<span class="icon is-medium">
-									<i class="fas fa-eye" aria-hidden="true"></i>
+									<i class="fas fa-eye"
+										 aria-hidden="true"></i>
 								</span>
 								<span>
 									<%= dt.views %></span>

@@ -18,6 +18,5 @@ router.get('/', function (req, res) {
 	});
 });
 
-
 // Exporting the route.
 module.exports = router;
