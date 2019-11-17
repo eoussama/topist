@@ -55,10 +55,4 @@ app.get('*', (req, res) => {
 	return res.render('error');
 });
 
-
-// Listening.
-app.listen(app.get('ws_port'), app.get('ws_host'), () => {
-
-	// Logging.
-	console.log(`Topist has successfully started on port ${app.get('ws_port')}`);
-});
+module.exports = app;

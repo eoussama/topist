@@ -1,0 +1,32 @@
+/**
+ * 
+ * @name:       Topist
+ * @version:    1.0.0
+ * @author:     EOussama
+ * @license     MIT
+ * @source:     https://github.com/EOussama/topist
+ * 
+ * Topist is an open platform for creating all sorts of TOP X lists, 
+ * you know, the same crappy lists that WatchMojo is famous for, 
+ * it doesn't matter what genre a list is about, Topist is there to house it, 
+ * hopefully there is no excessive controversy out of this one, one can only wish.
+ * 
+ */
+
+
+
+/**
+ * Importing the dependancies
+ */
+var app = require('./../app'),
+  http = require('http'),
+  server = http.createServer(app);
+
+/**
+ * Starting to the app
+ */
+server.listen(app.get('ws_port'), app.get('ws_host'), function () {
+  console.log(
+    'Supplements Maroc has successfully started on port ' + app.get('ws_port') + '.'
+  );
+});

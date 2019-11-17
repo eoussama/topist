@@ -5,9 +5,9 @@
 	"main": "app.js",
 	"scripts": {
 		"install": "npm install && bower install",
-		"seed": "node seed/index.js",
-		"start": "node app.js",
-		"dev": "npx nodemon"
+		"seed": "node ./seed/index.js",
+		"start": "node ./bin/www",
+		"dev": "npx nodemon ./bin/www"
 	},
 	"repository": {
 		"type": "git",
