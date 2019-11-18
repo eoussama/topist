@@ -20,21 +20,6 @@ var
 	env = require('dotenv-extended').load({ overrideProcessEnv: true, path: './config/.env' }),
 	express = require('express'),
 	app = require('./config/config')(express, env),
-	db = require('./database/mongo')(app),
-	routers = {
-		index: require('./routes/index'),
-		topist: require('./routes/topist')
-	};
-
-// Routing.
-app.use(routers.index);
-app.use('/topist', routers.topist);
-
-// Error redirecting.
-app.get('*', (req, res) => {
-
-	// Rendering the error.ejs template.
-	return res.render('error');
-});
+	db = require('./database/mongo')(app);
 
 module.exports = app;

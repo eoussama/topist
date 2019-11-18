@@ -9,9 +9,6 @@ module.exports = function (express, env) {
   // Setting up the app's configurations
   console.log('[Topist]: Setting up the app\'s configurations...');
 
-  // Importing the path utility
-  var path = require('path');
-
   // Instantiating an Express app
   var app = express();
 
@@ -30,10 +27,33 @@ module.exports = function (express, env) {
   // Setting up the asset middlewares
   console.log('[Topist]: Setting up the app\'s asset middlewares...');
 
+  // Importing the path utility
+  var path = require('path');
+
   app.use('/assets', express.static(path.join(__dirname + './../public')));
   app.use('/assets/bulma', express.static(path.join(__dirname + './../node_modules/bulma/css')));
   app.use('/assets/fontawesome', express.static(path.join(__dirname + './../node_modules/@fortawesome/fontawesome-free/css')));
   app.use('/assets/webfonts', express.static(path.join(__dirname + './../node_modules/@fortawesome/fontawesome-free/webfonts')));
+
+  // Setting up the routes
+  console.log('[Topist]: Setting up the app\'s routes...');
+
+  // Scaffolding a route object
+  var routers = {
+    index: require('./../routes/index'),
+    topist: require('./../routes/topist')
+  };
+
+  // Routing the app
+  app.use(routers.index);
+  app.use('/topist', routers.topist);
+
+  // Setting up missing pages fallback
+  app.get('*', (req, res) => {
+
+    // Rendering the error template
+    return res.render('error');
+  });
 
   // Returning the Express app object
   return app;
