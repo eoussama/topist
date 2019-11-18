@@ -5,94 +5,89 @@
 
 // Importing the dependancies.
 var
-	listGenerator = require('./list'),
+	async = require('async'),
 	mongoose = require('mongoose'),
+	listGenerator = require('./list'),
 	List = require('../models/List'),
 	Entry = require('../models/Entry');
 
 
 // Connecting to the database.
-mongoose.connect('mongodb://localhost:27017/topistdb', { useNewUrlParser: true }, function (err) {
+mongoose.connect('mongodb://mongo:27017/topistdb', { useNewUrlParser: true }, function () {
 
 	// Logging a message.
-	console.log("Seeding the database...");
+	console.log("[Seed]: Seeding the database...");
 
 	// Seeding lists.
-	seedLists(20).then(() => {
+	seedDB(2).then(() => {
 
 		// Logging a message.
-		console.log('Database seeded.');
+		console.log('[Seed]: Seeding has successfully finished.');
 
 		// Exeting the process.
-		process.exit(0);
+		// process.exit(0);
 	});
 });
 
 /**
  * Inserts the generated lists in the database.
  */
-function seedLists(count) {
-
+function seedDB(count) {
 	return new Promise((resolve, reject) => {
 
-		var lists = listGenerator.generateLists(count);
-		var insertedLists = 0;
+		// Generating data
+		var lists = listGenerator(count);
 
-		// Looping through the lists.
-		lists.forEach((list, index) => {
+		// Preparing the iterator
+		var index = 0;
+
+		// Looping through the lists
+		async.each(lists, function (list) {
 
 			// Inserting each list in the database.
 			List.create({
-				topic: list.topic,
+				title: list.title,
 				description: list.description,
 				date: list.date,
 				user: list.user,
 				upvotes: list.upvotes,
 				downvotes: list.downvotes,
 				views: list.views
-			}, (err, createdList) => {
+			}, function (err, list) {
 
 				if (!err) {
 
 					// Looping through each list's entries.
-					list.entries.forEach((_entry, _index) => {
+					async.each(list.entries, function (_entry) {
 
 						// Inserting each entry in the database.
-						entry = new Entry({
-							position: _entry.position,
-							title: _entry.title,
-							subtitle: _entry.subtitle,
-							picture: _entry.picture,
-							description: _entry.description
-						});
-
+						// entry = new Entry({
+						// 	position: _entry.position,
+						// 	title: _entry.title,
+						// 	subtitle: _entry.subtitle,
+						// 	picture: _entry.picture,
+						// 	description: _entry.description
+						// });
+						console.log({ _entry });
 						// Saving each entry to the database.
-						entry.save();
+						// entry.save();
 
 						// Pushing the created entry to the list.
-						createdList.entries.push(entry);
+						// list.entries.push(entry);
 					});
 
-					// For some reason, if nothing is printed at this point,
-					// some lists with have no entries. Weird.
-					console.log(`List ${index + 1} inserted!`);
-
 					// Saving the lists with the updated entries.
-					createdList.save();
-
-					// Incrementing the inserted lists' count.
-					insertedLists++;
+					console.log('[Seed]: List ' + (index + 1) + ' inserted.');
+					// list.save();
 				} else {
 
-					// Printing the error.
-					console.error(`[Seeding Error]: ${err}.`);
-				}
-
-				if (insertedLists === count) {
-
-					resolve();
+					// Outputing the error.
+					console.error('[Seed]: ' + err);
 				}
 			});
 		});
+
+		// Resolving the seed
+		resolve();
 	});
 }

@@ -5,7 +5,7 @@
 // Importing the dependancies.
 var
 	faker = require('faker'),
-	entry = require('./entry');
+	entryGenerator = require('./entry');
 
 /**
  * Generates a random list.
@@ -29,7 +29,7 @@ function generateList() {
 	var count = faker.random.number({ min: 3, max: 50 });
 
 	// Setting up entries.
-	list.entries = entry.generateEntries(count);
+	list.entries = entryGenerator(count);
 
 	// Returning the generated list.
 	return list;
@@ -37,7 +37,7 @@ function generateList() {
 
 
 // Exporting the lists.
-module.exports.generateLists = function (count) {
+module.exports = function (count) {
 
 	// The lists to seed.
 	var lists = [];

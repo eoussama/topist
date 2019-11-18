@@ -27,7 +27,7 @@ function generateEntry(position) {
 
 
 // Exporting the entries.
-module.exports.generateEntries = function (count) {
+module.exports = function (count) {
 
 	// The entries to seed.
 	var entries = [];

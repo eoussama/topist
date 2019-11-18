@@ -1,7 +1,7 @@
 // Importing the dependancies.
-const
+var
 	express = require('express'),
-	List = require('../models/List'),
+	List = require('./../models/List'),
 	router = express.Router();
 
 
@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 	List.find({}, (err, lists) => {
 
 		if (!err) {
-
+			console.log({ lists });
 			// Rendering the index.ejs template.
 			res.render('index', { lists });
 		}
