@@ -86,11 +86,11 @@ div.topbox-pos.pos-1 {
 .topist-list .card,
 .topist-list .message,
 .topist-list .box {
-  margin: auto;
+  margin: 80px auto;
   max-width: 600px;
 }
 
 .such-empty {
-  margin: auto;
+  margin: 80px auto;
   max-width: 600px;
 }

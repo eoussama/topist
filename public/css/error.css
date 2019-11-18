@@ -15,6 +15,7 @@ section {
 }
 
 div.box {
+  background-color: red;
   left: 50%;
   position: absolute;
   transform: translate(-50%, 100%);

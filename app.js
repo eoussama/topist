@@ -41,6 +41,7 @@ mongoose.connect(`mongodb://mongo:${app.get('db_port')}/${app.get('db_name')}`, 
 app.use('/assets', express.static(path.join(__dirname + '/public')));
 app.use('/assets/bulma', express.static(path.join(__dirname + '/node_modules/bulma/css')));
 app.use('/assets/fontawesome', express.static(path.join(__dirname + '/node_modules/@fortawesome/fontawesome-free/css')));
+app.use('/assets/webfonts', express.static(path.join(__dirname + '/node_modules/@fortawesome/fontawesome-free/webfonts')));
 
 // Routing.
 app.use(routers.index);
