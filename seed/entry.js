@@ -2,8 +2,12 @@
  * Entry seed.
  */
 
+
+
 // Importing the dependancies.
-var faker = require('faker');
+var
+	faker = require('faker'),
+	Entry = require('./../models/Entry');
 
 /**
  * Generates and entry.
@@ -13,18 +17,17 @@ var faker = require('faker');
 function generateEntry(position) {
 
 	// The entry to be generated.
-	var entry = {
+	var entry = new Entry({
 		position,
 		title: faker.lorem.words(),
 		subtitle: faker.lorem.words(),
 		picture: faker.image.abstract(),
 		description: faker.lorem.paragraph()
-	};
+	});
 
 	// Returning the generated entry.
 	return entry;
 }
-
 
 // Exporting the entries.
 module.exports = function (count) {

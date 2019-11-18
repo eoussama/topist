@@ -19,13 +19,10 @@ mongoose.connect('mongodb://mongo:27017/topistdb', { useNewUrlParser: true }, fu
 	console.log("[Seed]: Seeding the database...");
 
 	// Seeding lists.
-	seedDB(2).then(() => {
+	seedDB(10).then(function () {
 
 		// Logging a message.
 		console.log('[Seed]: Seeding has successfully finished.');
-
-		// Exeting the process.
-		// process.exit(0);
 	});
 });
 
@@ -44,50 +41,22 @@ function seedDB(count) {
 		// Looping through the lists
 		async.each(lists, function (list) {
 
-			// Inserting each list in the database.
-			List.create({
-				title: list.title,
-				description: list.description,
-				date: list.date,
-				user: list.user,
-				upvotes: list.upvotes,
-				downvotes: list.downvotes,
-				views: list.views
-			}, function (err, list) {
+			// Looping through each list's entries.
+			async.each(list.entries, function (entry) {
 
-				if (!err) {
-
-					// Looping through each list's entries.
-					async.each(list.entries, function (_entry) {
-
-						// Inserting each entry in the database.
-						// entry = new Entry({
-						// 	position: _entry.position,
-						// 	title: _entry.title,
-						// 	subtitle: _entry.subtitle,
-						// 	picture: _entry.picture,
-						// 	description: _entry.description
-						// });
-						console.log({ _entry });
-						// Saving each entry to the database.
-						// entry.save();
-
-						// Pushing the created entry to the list.
-						// list.entries.push(entry);
-					});
-
-					// Saving the lists with the updated entries.
-					console.log('[Seed]: List ' + (index + 1) + ' inserted.');
-					// list.save();
-				} else {
-
-					// Outputing the error.
-					console.error('[Seed]: ' + err);
-				}
+				// Saving each entry to the database.
+				entry.save();
 			});
-		});
 
-		// Resolving the seed
-		resolve();
+			// Saving the lists with the updated entries.
+			console.log('[Seed]: List ' + (index++ + 1) + ' inserted.');
+			list.save();
+
+			if (count === index) {
+
+				// Resolving the seed
+				resolve();
+			}
+		});
 	});
 }

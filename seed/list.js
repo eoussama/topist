@@ -2,9 +2,12 @@
  * List seed.
  */
 
+
+
 // Importing the dependancies.
 var
 	faker = require('faker'),
+	List = require('./../models/List'),
 	entryGenerator = require('./entry');
 
 /**
@@ -12,29 +15,28 @@ var
  */
 function generateList() {
 
+	// Setting up the calculation object
+	var calc = {
+		upvotes: faker.random.number(),
+		downvotes: faker.random.number(),
+		count: faker.random.number({ min: 3, max: 50 })
+	};
+
 	// The list to be generated.
-	var list = {
-		topic: faker.lorem.words(),
+	var list = new List({
+		title: faker.lorem.words(),
 		description: faker.lorem.paragraph(),
 		date: faker.date.recent(),
 		user: faker.internet.userName(),
-		upvotes: faker.random.number(),
-		downvotes: faker.random.number()
-	};
-
-	// Setting up a proper view count.
-	list.views = faker.random.number() + list.upvotes + list.downvotes;
-
-	// The entries to seed.
-	var count = faker.random.number({ min: 3, max: 50 });
-
-	// Setting up entries.
-	list.entries = entryGenerator(count);
+		views: faker.random.number() + calc.upvotes + calc.downvotes,
+		upvotes: calc.upvotes,
+		downvotes: calc.downvotes,
+		entries: entryGenerator(calc.count)
+	});
 
 	// Returning the generated list.
 	return list;
 }
-
 
 // Exporting the lists.
 module.exports = function (count) {
