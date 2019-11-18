@@ -10,7 +10,7 @@ module.exports = function (app) {
 
   // Connecting to the database.
   db.connect('mongodb://mongo:' + app.get('db_port') + '/' + app.get('db_name'), { useNewUrlParser: true })
-    .then(function () {
+    .then(function (a) {
       console.log('[MongoDB]: Successfully connected to the database.');
     })
     .catch(function (err) {

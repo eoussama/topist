@@ -18,21 +18,13 @@
 // Importing the dependancies.
 var
 	env = require('dotenv-extended').load({ overrideProcessEnv: true, path: './config/.env' }),
-	path = require('path'),
 	express = require('express'),
-	app = express(),
-	config = require('./config/config')(app, env),
+	app = require('./config/config')(express, env),
 	db = require('./database/mongo')(app),
 	routers = {
 		index: require('./routes/index'),
 		topist: require('./routes/topist')
 	};
-
-// Static assets.
-app.use('/assets', express.static(path.join(__dirname + '/public')));
-app.use('/assets/bulma', express.static(path.join(__dirname + '/node_modules/bulma/css')));
-app.use('/assets/fontawesome', express.static(path.join(__dirname + '/node_modules/@fortawesome/fontawesome-free/css')));
-app.use('/assets/webfonts', express.static(path.join(__dirname + '/node_modules/@fortawesome/fontawesome-free/webfonts')));
 
 // Routing.
 app.use(routers.index);
