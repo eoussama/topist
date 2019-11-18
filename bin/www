@@ -27,6 +27,6 @@ var app = require('./../app'),
  */
 server.listen(app.get('ws_port'), function () {
   console.log(
-    'Supplements Maroc has successfully started on port ' + app.get('ws_port') + '.'
+    '[Topist]: Topist has successfully started on port ' + app.get('ws_port') + '.'
   );
 });

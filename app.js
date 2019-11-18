@@ -16,26 +16,17 @@
 
 
 // Importing the dependancies.
-const
+var
 	env = require('dotenv-extended').load({ overrideProcessEnv: true, path: './config/.env' }),
 	path = require('path'),
 	express = require('express'),
-	mongoose = require('mongoose'),
 	app = express(),
+	config = require('./config/config')(app, env),
+	db = require('./database/mongo')(app),
 	routers = {
 		index: require('./routes/index'),
 		topist: require('./routes/topist')
 	};
-
-// Setting up the app.
-app.set('ws_port', 3000);
-app.set('db_host', env.DB_HOST || 'localhost');
-app.set('db_name', env.DB_NAME || 'topistdb');
-app.set('db_port', env.DB_PORT || 27017);
-app.set("view engine", "ejs");
-
-// Connecting to the database.
-mongoose.connect(`mongodb://mongo:${app.get('db_port')}/${app.get('db_name')}`, { useNewUrlParser: true });
 
 // Static assets.
 app.use('/assets', express.static(path.join(__dirname + '/public')));
