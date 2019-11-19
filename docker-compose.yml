@@ -7,7 +7,7 @@ services:
     ports:
       - 27017:27017
   app:
-    image: eoussama/topist-app:1.0.0
+    image: eoussama/topist:app-1.0.0
     container_name: topist-app
     restart: always
     build: ./
@@ -16,7 +16,7 @@ services:
     depends_on:
       - mongo
   dev:
-    image: eoussama/topist-dev:1.0.0
+    image: eoussama/topist:dev-1.0.0
     container_name: topist-dev
     restart: always
     build:
