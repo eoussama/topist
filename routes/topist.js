@@ -10,7 +10,7 @@ var
 router.post('/', function (req, res) {
 	if ('topist' in req.body) {
 		var _topist = JSON.parse(req.body.topist);
-		var topist = new List({ ..._topist });
+		var topist = new List({ ..._topist, entries: [] });
 		var index = 0;
 
 		new Promise(function (resolve, reject) {
@@ -19,13 +19,12 @@ router.post('/', function (req, res) {
 
 				entry.save();
 				topist.entries.push(entry);
-
+				console.log(index);
 				if (++index === topist.entries.length) {
 					resolve();
 				}
 			});
 		}).then(function () {
-			console.log(topist);
 			topist.save(function (error, data) {
 				if (!error) {
 					res.json({ success: true });
