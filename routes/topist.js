@@ -1,18 +1,30 @@
 // Importing the dependancies.
 var
+	async = require('async'),
 	express = require('express'),
 	List = require('../models/List'),
 	Entry = require('../models/Entry'),
 	router = express.Router();
 
-
 // Setting topist's insertion route.
 router.post('/', function (req, res) {
-	console.log(req.body);
-	console.log('Topist created.');
-	res.json({ success: true });
-});
+	if ('topist' in req.body) {
+		var _topist = JSON.parse(req.body.topist);
+		var topist = new List({ ..._topist });
 
+		async.each(_topist.entries, function (_entry) {
+			var entry = new Entry({ ..._entry });
+
+			topist.entries.push(entry);
+			entry.save();
+		});
+
+		topist.save();
+		res.json({ success: true });
+	} else {
+		res.json({ success: false });
+	}
+});
 
 // Setting up the topist's input route.
 router.get('/new', function (req, res) {
@@ -20,7 +32,6 @@ router.get('/new', function (req, res) {
 	// Rendering the topist/new.ejs template.
 	res.render('topist/new');
 });
-
 
 // Setting up the topist's display route.
 router.get('/:id', function (req, res) {
@@ -42,7 +53,6 @@ router.get('/:id', function (req, res) {
 		}
 	});
 });
-
 
 // Exporting the route.
 module.exports = router;

@@ -26,7 +26,7 @@ window.addEventListener('load', function () {
 
 			var
 				topist = {
-					topic: document.getElementById('topic-title').value,
+					title: document.getElementById('topic-title').value,
 					description: document.getElementById('topic-description').value,
 					date: new Date(),
 					user: 'admin',
