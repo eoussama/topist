@@ -27,6 +27,13 @@ module.exports = function (express, env) {
   // Setting up the asset middlewares
   console.log('[Topist]: Setting up the app\'s asset middlewares...');
 
+  // Importing the body-parser utility
+  var bodyParser = require('body-parser');
+
+  // Configuring body parser
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+
   // Importing the path utility
   var path = require('path');
 

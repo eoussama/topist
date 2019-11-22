@@ -8,8 +8,9 @@ var
 
 // Setting topist's insertion route.
 router.post('/', function (req, res) {
-
+	console.log(req.body);
 	console.log('Topist created.');
+	res.json({ success: true });
 });
 
 

@@ -40,7 +40,16 @@ window.addEventListener('load', function () {
 			xhr.open("POST", '/topist', true);
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xhr.send(`topist=${JSON.stringify(topist)}`);
-			window.location = '/';
+
+			xhr.addEventListener('load', function (e) {
+				var result = JSON.parse(e.currentTarget.response);
+
+				if (result.success) {
+					window.location = '/';
+				} else {
+					alert('Topist was not created!');
+				}
+			});
 		});
 
 		formTopist.addEventListener('reset', function () {
