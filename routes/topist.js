@@ -11,16 +11,30 @@ router.post('/', function (req, res) {
 	if ('topist' in req.body) {
 		var _topist = JSON.parse(req.body.topist);
 		var topist = new List({ ..._topist });
+		var index = 0;
 
-		async.each(_topist.entries, function (_entry) {
-			var entry = new Entry({ ..._entry });
+		new Promise(function (resolve, reject) {
+			async.each(_topist.entries, function (_entry) {
+				var entry = new Entry({ ..._entry });
 
-			topist.entries.push(entry);
-			entry.save();
+				entry.save();
+				topist.entries.push(entry);
+
+				if (++index === topist.entries.length) {
+					resolve();
+				}
+			});
+		}).then(function () {
+			console.log(topist);
+			topist.save(function (error, data) {
+				if (!error) {
+					res.json({ success: true });
+				} else {
+					console.error(error);
+					res.json({ success: false });
+				}
+			});
 		});
-
-		topist.save();
-		res.json({ success: true });
 	} else {
 		res.json({ success: false });
 	}
