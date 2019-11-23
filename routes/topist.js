@@ -19,7 +19,6 @@ router.post('/', function (req, res) {
 
 				entry.save();
 				topist.entries.push(entry);
-				console.log(index);
 				if (++index === topist.entries.length) {
 					resolve();
 				}
@@ -27,7 +26,7 @@ router.post('/', function (req, res) {
 		}).then(function () {
 			topist.save(function (error, data) {
 				if (!error) {
-					res.json({ success: true });
+					res.json({ success: true, id: topist._id });
 				} else {
 					console.error(error);
 					res.json({ success: false });

@@ -44,10 +44,10 @@ window.addEventListener('load', function () {
 			xhr.addEventListener('load', function (e) {
 				var result = JSON.parse(e.currentTarget.response);
 
-				if (result.success) {
-					window.location = '/';
-				} else {
+				if (!result.success) {
 					alert('Topist was not created!');
+				} else {
+					window.location.href = '/topist/' + result.id;
 				}
 			});
 		});
