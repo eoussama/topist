@@ -236,10 +236,10 @@
 			<nav class="tabs is-boxed is-fullwidth">
 				<div class="container">
 					<ul>
-						<li class="is-active"><a href="?type=0">Most popular</a></li>
-						<li><a href="?type=1">Most viewed</a></li>
-						<li><a href="?type=2">Oldest</a></li>
-						<li><a href="?type=3">Recent</a></li>
+						<li class="<%= type === 0 ? 'is-active' : '' %>"><a href="?type=0">Most popular</a></li>
+						<li class="<%= type === 1 ? 'is-active' : '' %>"><a href="?type=1">Most viewed</a></li>
+						<li class="<%= type === 2 ? 'is-active' : '' %>"><a href="?type=2">Oldest</a></li>
+						<li class="<%= type === 3 ? 'is-active' : '' %>"><a href="?type=3">Recent</a></li>
 					</ul>
 				</div>
 			</nav>

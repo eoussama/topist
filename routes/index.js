@@ -9,14 +9,14 @@ var
 router.get('/', function (req, res) {
 
 	// Getting the sorting optionq
-	const opts = tabulator(req);
+	const tab = tabulator(req);
 
 	List.find({})
-		.sort(opts)
+		.sort(tab.opts)
 		.then(function (lists) {
 
 			// Rendering the index.ejs template.
-			res.render('index', { lists });
+			res.render('index', { lists, type: tab.type });
 		});
 });
 

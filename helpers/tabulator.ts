@@ -19,5 +19,5 @@ module.exports = function(req) {
       delete opts[key];
     });
 
-  return opts;
+  return { opts, type };
 };
