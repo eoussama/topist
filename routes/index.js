@@ -2,13 +2,14 @@
 var
 	express = require('express'),
 	List = require('./../models/List'),
-	tabulator = require('./../helpers/tabulator'),
+	tabulator = require('./../helpers/tabulator.ts'),
 	router = express.Router();
 
 // Setting up the route.
 router.get('/', function (req, res) {
 
-	const opts = tabulator.tabulate(req);
+	const opts = tabulator(req);
+	console.log({ opts });
 
 	List.find({})
 		.sort({ date: -1 })
