@@ -8,11 +8,11 @@ var
 // Setting up the route.
 router.get('/', function (req, res) {
 
+	// Getting the sorting optionq
 	const opts = tabulator(req);
-	console.log({ opts });
 
 	List.find({})
-		.sort({ date: -1 })
+		.sort(opts)
 		.then(function (lists) {
 
 			// Rendering the index.ejs template.
