@@ -15,18 +15,21 @@ var
 // Connecting to the database.
 mongoose.connect('mongodb://mongo:27017/topistdb', { useNewUrlParser: true }, function () {
 
+	// Getting the input
+	var input = parseInt(process.argv.slice().reverse()[0]);
+
 	// Defining the entry count
-	var count = 10;
-	console.log({ count });
+	var count = (input && !isNaN(input)) ? input : 10;
+
 	// Logging a message.
 	console.log("[Seed]: Seeding the database...");
 
 	// Seeding lists.
-	// seedDB(count).then(function () {
+	seedDB(count).then(function () {
 
-	// 	// Logging a message.
-	// 	console.log('[Seed]: Seeding has successfully finished.');
-	// });
+		// Logging a message.
+		console.log('[Seed]: Seeding has successfully finished.');
+	});
 });
 
 /**
