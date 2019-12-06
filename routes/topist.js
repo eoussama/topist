@@ -57,7 +57,7 @@ router.get('/:id', function (req, res) {
 		if (!err && list) {
 
 			// Rendering the topist/index.ejs template.
-			res.render('topist/index', { list });
+			res.render('topist/index', { list, type: 0 });
 		} else {
 
 			// Redirecting in case some error occured.
