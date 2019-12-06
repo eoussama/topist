@@ -46,38 +46,40 @@
 		<hr />
 
 		<% list.entries.sort((a, b) => b.position - a.position).forEach(entry => {
-    %>
-		<div id="<%= 'entry_' + list._id %>"
-				 class="card">
-			<div class="card-image">
-				<figure class="image is-4by3">
-					<img src="<%= entry.picture %>"
-							 alt="<%= entry.title %> image" />
-				</figure>
-			</div>
-			<div class="card-content">
-				<div class="media">
-					<div class="media-left">
-						<div class="topbox-pos pos-<%= entry.position %>">
-							<span class="value"> <%= entry.position %></span>
+		%>
+		<a href="<%= '#entry_' + entry._id %>">
+			<div id="<%= 'entry_' + entry._id %>"
+					 class="card">
+				<div class="card-image">
+					<figure class="image is-4by3">
+						<img src="<%= entry.picture %>"
+								 alt="<%= entry.title %> image" />
+					</figure>
+				</div>
+				<div class="card-content">
+					<div class="media">
+						<div class="media-left">
+							<div class="topbox-pos pos-<%= entry.position %>">
+								<span class="value"> <%= entry.position %></span>
+							</div>
+						</div>
+						<div class="media-content">
+							<p class="title is-4">
+								<%= entry.title %>
+							</p>
+							<p class="subtitle is-6">
+								<%= entry.subtitle %>
+							</p>
 						</div>
 					</div>
-					<div class="media-content">
-						<p class="title is-4">
-							<%= entry.title %>
-						</p>
-						<p class="subtitle is-6">
-							<%= entry.subtitle %>
+					<div class="content">
+						<p>
+							<%= entry.description %>
 						</p>
 					</div>
 				</div>
-				<div class="content">
-					<p>
-						<%= entry.description %>
-					</p>
-				</div>
 			</div>
-		</div>
+		</a>
 		<hr />
 		<% }); %>
 	</div>
