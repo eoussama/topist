@@ -47,7 +47,8 @@
 
 		<% list.entries.sort((a, b) => b.position - a.position).forEach(entry => {
     %>
-		<div class="card">
+		<div id="<%= 'entry_' + list._id %>"
+				 class="card">
 			<div class="card-image">
 				<figure class="image is-4by3">
 					<img src="<%= entry.picture %>"
